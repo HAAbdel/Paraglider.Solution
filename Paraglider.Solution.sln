@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paraglider.SL", "Paraglider
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paraglider.DAL", "Paraglider.DAL\Paraglider.DAL.csproj", "{7F77775D-3602-4851-9CB7-701AB2C9CA76}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paraglider.App", "Paraglider.App\Paraglider.App.csproj", "{B5BAA112-38D0-4489-A695-B200E6198F0D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7F77775D-3602-4851-9CB7-701AB2C9CA76}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F77775D-3602-4851-9CB7-701AB2C9CA76}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F77775D-3602-4851-9CB7-701AB2C9CA76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5BAA112-38D0-4489-A695-B200E6198F0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5BAA112-38D0-4489-A695-B200E6198F0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5BAA112-38D0-4489-A695-B200E6198F0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5BAA112-38D0-4489-A695-B200E6198F0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
