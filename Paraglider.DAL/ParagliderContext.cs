@@ -11,5 +11,6 @@ namespace Paraglider.DAL
 
         }
         public DbSet<Driver> Drivers { get; set; }
+        public DbSet<Role> Roles { get; set; }
     }
 }
