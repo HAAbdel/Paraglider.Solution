@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29519.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paraglider.App", "Paraglider.App\Paraglider.App.csproj", "{B5BAA112-38D0-4489-A695-B200E6198F0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paraglider.DAL", "Paraglider.DAL\Paraglider.DAL.csproj", "{359A13EF-3700-4F9B-8403-F7A9452FAB65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paraglider.DAL", "Paraglider.DAL\Paraglider.DAL.csproj", "{359A13EF-3700-4F9B-8403-F7A9452FAB65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paraglider.SL", "Paraglider.SL\Paraglider.SL.csproj", "{54A304E0-4B09-467D-95A1-13F5752EE05E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paraglider.SL", "Paraglider.SL\Paraglider.SL.csproj", "{54A304E0-4B09-467D-95A1-13F5752EE05E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParagliderAPP", "ParagliderAPP\ParagliderAPP.csproj", "{8DE8A507-551B-49CE-ABDA-8E9252B1B914}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B5BAA112-38D0-4489-A695-B200E6198F0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B5BAA112-38D0-4489-A695-B200E6198F0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B5BAA112-38D0-4489-A695-B200E6198F0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B5BAA112-38D0-4489-A695-B200E6198F0D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{359A13EF-3700-4F9B-8403-F7A9452FAB65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{359A13EF-3700-4F9B-8403-F7A9452FAB65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{359A13EF-3700-4F9B-8403-F7A9452FAB65}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -27,6 +23,10 @@ Global
 		{54A304E0-4B09-467D-95A1-13F5752EE05E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54A304E0-4B09-467D-95A1-13F5752EE05E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54A304E0-4B09-467D-95A1-13F5752EE05E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DE8A507-551B-49CE-ABDA-8E9252B1B914}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DE8A507-551B-49CE-ABDA-8E9252B1B914}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DE8A507-551B-49CE-ABDA-8E9252B1B914}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DE8A507-551B-49CE-ABDA-8E9252B1B914}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
