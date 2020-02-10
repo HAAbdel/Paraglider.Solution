@@ -4,7 +4,10 @@ using System.Text;
 
 namespace Paraglider.DAL.Models
 {
-    class Driver
+    public class Driver
     {
+        public long DriverId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     }
 }

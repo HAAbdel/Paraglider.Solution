@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Paraglider.DAL;
 
 namespace Paraglider.App
 {
@@ -17,7 +19,7 @@ namespace Paraglider.App
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-        
+            services.AddDbContext<ParagliderContext>(item => item.UseSqlServer(("myconn")));
 
         }
 

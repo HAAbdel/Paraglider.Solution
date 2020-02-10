@@ -6,6 +6,10 @@ namespace Paraglider.DAL
 {
     public class ParagliderContext : DbContext
     {
-        DbSet<Driver> Drivers { get; set; }
+        public ParagliderContext(DbContextOptions<ParagliderContext> options) : base(options)
+        {
+
+        }
+        public DbSet<Driver> Drivers { get; set; }
     }
 }
