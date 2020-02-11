@@ -3,14 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using ParagliderAPP.Models;
 
 namespace ParagliderAPP.Controllers
 {
     public class PilotController : Controller
     {
-        public IActionResult Index()
+        private IPilotRepository _pilotRepository;
+
+        public PilotController(IPilotRepository pilotRepository)
         {
-            return View();
+            _pilotRepository = pilotRepository;
+        }
+        public ViewResult Index()
+        {
+            
+           var model =_pilotRepository.GetAllPilot();
+            return View(model);
+
         }
     }
 }

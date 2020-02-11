@@ -29,13 +29,9 @@ namespace ParagliderAPP.Controllers
         }
         public IActionResult Pilot()
         {
-            return View();
+            return RedirectToAction("Index", "Pilot");
         }
         public IActionResult Paraglider()
-        {
-            return View();
-        }
-        public IActionResult MemberShip()
         {
             return View();
         }

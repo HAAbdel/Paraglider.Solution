@@ -1,0 +1,44 @@
+﻿
+@model IEnumerable<Paraglider.DAL.Models.Pilot>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>id </th>
+                <th>first</th>
+                <th>last</th>
+                <th>Email </th>
+                <th>PilotRole</th>
+                <th>PhoneNumber</th>
+                <th>Wheight</th>
+                <th>Memberships</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var pilot in Model)
+            {
+            <tr>
+                <th>@pilot.PilotId </th>
+                <th>@pilot.FirstName</th>
+                <th>@pilot.LastName</th>
+                <th>@pilot.Email </th>
+                <th>@pilot.PilotRole</th>
+                <th>@pilot.PhoneNumber</th>
+                <th>@pilot.Weight</th>
+                <th>@pilot.Memberships</th>
+                <th></th>
+
+            </tr>
+
+            }
+        </tbody>
+    </table>
+
+</body>
+</html>

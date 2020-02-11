@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Paraglider.DAL;
+using ParagliderAPP.Models;
 
 namespace ParagliderAPP
 {
@@ -29,6 +30,7 @@ namespace ParagliderAPP
         {
             services.AddDbContext<ParagliderContext>(item => item.UseSqlServer(this.config.GetConnectionString("myconn")));
             services.AddControllersWithViews();
+            services.AddSingleton<IPilotRepository, MockpilotRepository>();
            
         }
 
