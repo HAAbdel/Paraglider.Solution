@@ -11,7 +11,9 @@ namespace Paraglider.DAL.Models
         public Driver()
         {
             Weight = 0;
+            DriverId = System.Guid.NewGuid();
         }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid DriverId { get; set; }
         [Required]
         [MaxLength(30)]
@@ -27,7 +29,7 @@ namespace Paraglider.DAL.Models
         public string Email { get; set; }
         [Required]
         public decimal Weight { get; set; }
-        [ForeignKey("Role")]
-        public Role RoleId { get; set; }
+
+        public Role DriverRole { get; set; }
     }
 }

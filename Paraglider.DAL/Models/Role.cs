@@ -1,22 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Paraglider.DAL.Models
 {
-    public enum RolesList // public a changer par la suite
-    {
-       Administrator,
-       CEO,
-       Manager,
-       CoManager
-    }
     public class Role
     {
-        [Required]
+        [ForeignKey("Driver")]
         public Guid RoleId { get; set; }
-        [Required]
-        public RolesList RoleName { get; set; }
+        public string RoleName { get; set; }
+        public Driver Driver { get; set; }
     }
 }
