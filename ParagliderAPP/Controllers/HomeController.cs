@@ -27,6 +27,18 @@ namespace ParagliderAPP.Controllers
         {
             return View();
         }
+        public IActionResult Pilot()
+        {
+            return View();
+        }
+        public IActionResult Paraglider()
+        {
+            return View();
+        }
+        public IActionResult MemberShip()
+        {
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
