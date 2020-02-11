@@ -8,9 +8,9 @@ namespace Paraglider.DAL.Models
 {
     public class Role
     {
-        [ForeignKey("Pilot")]
         public int RoleId { get; set; }
         public string RoleName { get; set; }
+        public int PilotId { get; set; }
         public Pilot Pilot { get; set; }
     }
 }

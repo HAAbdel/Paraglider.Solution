@@ -27,8 +27,9 @@ namespace Paraglider.DAL.Models
         [EmailAddress]
         public string Email { get; set; }
         [Required]
+        [Column(TypeName = "decimal(3,1)")]
         public decimal Weight { get; set; }
-        public Role PilotRole { get; set; }
+        public Role Role { get; set; }
         [Required]
         public IList<PilotMembership> PilotMemberships { get; set; }
         public IList<PilotTraineeship> PilotTraineeships { get; set; }
