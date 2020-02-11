@@ -11,10 +11,9 @@ namespace Paraglider.DAL.Models
         public Pilot()
         {
             Weight = 0;
-            PilotId = System.Guid.NewGuid();
         }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid PilotId { get; set; }
+        public int PilotId { get; set; }
         [Required]
         [MaxLength(30)]
         [MinLength(3)]
@@ -29,8 +28,9 @@ namespace Paraglider.DAL.Models
         public string Email { get; set; }
         [Required]
         public decimal Weight { get; set; }
-
         public Role PilotRole { get; set; }
-        public virtual ICollection<Membership> Memberships { get; set; }
+        [Required]
+        public IList<PilotMembership> PilotMemberships { get; set; }
+        public IList<PilotTraineeship> PilotTraineeships { get; set; }
     }
 }
