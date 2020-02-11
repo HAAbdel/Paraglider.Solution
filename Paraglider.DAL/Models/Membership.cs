@@ -4,7 +4,10 @@ using System.Text;
 
 namespace Paraglider.DAL.Models
 {
-    class Membership
+   public class Membership
     {
+        public Guid MembershipId { get; set; }
+
+        public virtual ICollection<Pilot> Pilots { get; set; }
     }
 }

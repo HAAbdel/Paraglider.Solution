@@ -10,7 +10,8 @@ namespace Paraglider.DAL
         {
 
         }
-        public DbSet<Driver> Drivers { get; set; }
+        public DbSet<Pilot> Pilots { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<Membership> Memberships {get;set;}
     }
 }

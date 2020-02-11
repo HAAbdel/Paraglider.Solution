@@ -6,15 +6,15 @@ using System.Text;
 
 namespace Paraglider.DAL.Models
 {
-    public class Driver
+    public class Pilot
     {
-        public Driver()
+        public Pilot()
         {
             Weight = 0;
-            DriverId = System.Guid.NewGuid();
+            PilotId = System.Guid.NewGuid();
         }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid DriverId { get; set; }
+        public Guid PilotId { get; set; }
         [Required]
         [MaxLength(30)]
         [MinLength(3)]
@@ -30,6 +30,7 @@ namespace Paraglider.DAL.Models
         [Required]
         public decimal Weight { get; set; }
 
-        public Role DriverRole { get; set; }
+        public Role PilotRole { get; set; }
+        public virtual ICollection<Membership> Memberships { get; set; }
     }
 }
