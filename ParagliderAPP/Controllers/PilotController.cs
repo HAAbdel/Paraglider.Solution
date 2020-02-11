@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ParagliderAPP.Models;
 
+
+
 namespace ParagliderAPP.Controllers
 {
     public class PilotController : Controller
@@ -21,6 +23,11 @@ namespace ParagliderAPP.Controllers
            var model =_pilotRepository.GetAllPilot();
             return View(model);
 
+        }
+
+        public ActionResult ModalPopUp()
+        {
+            return View();
         }
     }
 }

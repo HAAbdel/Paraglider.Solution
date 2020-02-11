@@ -14,7 +14,7 @@ namespace ParagliderAPP.Models
         {
             _PilotList = new List<Pilot>()
             {
-                new Pilot() {PilotId =new Guid(), FirstName="yves",LastName="blavier",Email="yblavier@hotmail.com",PhoneNumber="0474082325",Weight = 70 }
+                new Pilot() {PilotId =1, FirstName="yves",LastName="blavier",Email="yblavier@hotmail.com",PhoneNumber="0474082325",Weight = 70 }
             };
         }
 
@@ -23,9 +23,9 @@ namespace ParagliderAPP.Models
             return _PilotList;
         }
 
-        public Pilot GetPilot(Guid Id)
+        public Pilot GetPilot(string name)
         {
-            return _PilotList.FirstOrDefault(e => e.PilotId == Id);
+            return _PilotList.FirstOrDefault(e => e.LastName == name);
         }
 
     }

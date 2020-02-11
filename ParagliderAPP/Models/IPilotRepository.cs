@@ -9,7 +9,7 @@ namespace ParagliderAPP.Models
 {
     public interface IPilotRepository
     {
-        Pilot GetPilot(Guid Id);
+        Pilot GetPilot(string name);
         IEnumerable<Pilot> GetAllPilot();
     }
 }

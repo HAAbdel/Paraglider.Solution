@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Paraglider.DAL\Paraglider.DAL.csproj" />
+    <ProjectReference Include="..\Paraglider.sl\Paraglider.sl.csproj" />
   </ItemGroup>
 
 
