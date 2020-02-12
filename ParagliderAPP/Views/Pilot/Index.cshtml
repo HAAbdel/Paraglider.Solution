@@ -6,16 +6,17 @@
     <title></title>
 </head>
 <body>
-    <form  method="get">
+ 
+    <form method="Post">
         <div class="form-group">
             <div class="input-group">
-                <input type="search" class="form-control" value="" />
+                <input type="search" class="form-control" name="name" value="" />
                 <div class="input-group-append">
                     <button class="btn btn-secondary">
                         <i class="fas fa-search"></i>
                     </button>
                 </div>
-                
+
             </div>
         </div>
     </form>
@@ -47,7 +48,7 @@
                     <th>@pilot.PhoneNumber</th>
                     <th>@pilot.Weight</th>
                     <th>@pilot.PilotMemberships</th>
-                    <th><button type="submit" id="btnShowModal" class="btn btn-primary button button4">Modify</button></th>
+                    <th><button type="submit" class="btn btn-primary button button4" value="@pilot.PilotId" name="Edit">Modify</button></th>
                     <th><button type="submit" class="btn btn-primary button button4">Delete</button></th>
 
                 </tr>
@@ -55,62 +56,13 @@
             }
         </tbody>
     </table>
-    <div class="col-xs-12">
 
 
 
-        <div class="modal fade" tabindex="-1" id="loginModal"
-             data-keyboard="false" data-backdrop="static">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">
-                            ×
-                        </button>
-                        <h4 class="modal-title">MODIFY</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <a>FirstName</a>
-                                <input />
-                            </div>
-                            <div class="form-group">
-                                <a>Lastname</a>
-                                <input />
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary button button4">Validate</button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
 
 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-  
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
 
-    </script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
 
-    <script type="text/javascript">
-
-        $(document).ready(function () {
-            $("#btnShowModal").click(function () {
-                $("#loginModal").modal('show');
-            });
-
-            $("#btnHideModal").click(function () {
-                $("#loginModal").modal('hide');
-            });
-        });
-    </script>
-    
 </body>
 </html>

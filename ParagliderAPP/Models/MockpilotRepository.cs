@@ -14,7 +14,10 @@ namespace ParagliderAPP.Models
         {
             _PilotList = new List<Pilot>()
             {
-                new Pilot() {PilotId =1, FirstName="yves",LastName="blavier",Email="yblavier@hotmail.com",PhoneNumber="0474082325",Weight = 70 }
+                new Pilot() {PilotId =1, FirstName="yves",LastName="blavier",Email="yblavier@hotmail.com",PhoneNumber="0474082325",Weight = 70 },
+                 new Pilot() {PilotId =2, FirstName="Billy",LastName="Thekid",Email="Billythekid@hotmail.com",PhoneNumber="066666666",Weight = 69 },
+                 new Pilot() {PilotId =2, FirstName="Bou",LastName="boule",Email="bouboule@hotmail.com",PhoneNumber="066666666",Weight = 69 }
+
             };
         }
 
@@ -23,10 +26,20 @@ namespace ParagliderAPP.Models
             return _PilotList;
         }
 
-        public Pilot GetPilot(string name)
+    
+ 
+       public IEnumerable<Pilot>GetPilotByName(string Name)
         {
-            return _PilotList.FirstOrDefault(e => e.LastName == name);
+            if (Name == null)
+            {
+                return _PilotList;
+            }
+            else
+            {
+              
+                return _PilotList.FindAll(e => e.LastName.ToLower().Contains(Name.ToLower()));
+            }
+           
         }
-
     }
 }
