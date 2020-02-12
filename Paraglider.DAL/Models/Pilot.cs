@@ -33,5 +33,6 @@ namespace Paraglider.DAL.Models
         public IList<PilotMembership> PilotMemberships { get; set; }
         public IList<PilotTraineeship> PilotTraineeships { get; set; }
         public IList<PilotCertificate> PilotCertificates { get; set; }
+        public IList<Flight> Flights { get; set; }
     }
 }

@@ -7,11 +7,10 @@ using System.Text;
 
 namespace Paraglider.DAL.ContextConfiguration.ModelsConfiguration
 {
-    class CertificateConfiguration : IEntityTypeConfiguration<Certificate>
+    class LandingSiteConfiguration : IEntityTypeConfiguration<LandingSite>
     {
-        public void Configure(EntityTypeBuilder<Certificate> builder)
+        public void Configure(EntityTypeBuilder<LandingSite> builder)
         {
-
         }
     }
 }

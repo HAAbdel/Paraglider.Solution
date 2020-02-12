@@ -7,9 +7,9 @@ using System.Text;
 
 namespace Paraglider.DAL.ContextConfiguration.ModelsConfiguration
 {
-    class ParaglinderConfig : IEntityTypeConfiguration<Paraglinder>
+    class ParagliderConfig : IEntityTypeConfiguration<Models.Paraglider>
     {
-        public void Configure(EntityTypeBuilder<Paraglinder> builder)
+        public void Configure(EntityTypeBuilder<Models.Paraglider> builder)
         {
 
         }
