@@ -19,15 +19,20 @@ namespace ParagliderAPP.Controllers
         }
         public ViewResult Index()
         {
-            
-           var model =_pilotRepository.GetAllPilot();
+
+            var model = _pilotRepository.GetAllPilot();
             return View(model);
 
         }
-
-        public ActionResult ModalPopUp()
+        [HttpPost]
+        public ViewResult Index(string name)
         {
-            return View();
+            var model = _pilotRepository.GetPilotByName(name);
+            return View(model);
         }
+    
+
+
     }
+      
 }
