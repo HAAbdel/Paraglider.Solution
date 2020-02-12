@@ -7,9 +7,9 @@ using System.Text;
 
 namespace Paraglider.DAL.ContextConfiguration.ModelsConfiguration
 {
-    class PilotConfiguration : IEntityTypeConfiguration<Pilot>
+    class CertificateConfiguration : IEntityTypeConfiguration<Certificate>
     {
-        public void Configure(EntityTypeBuilder<Pilot> builder)
+        public void Configure(EntityTypeBuilder<Certificate> builder)
         {
         }
     }
