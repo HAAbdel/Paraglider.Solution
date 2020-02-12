@@ -12,7 +12,6 @@ namespace Paraglider.DAL.Models
         {
             Weight = 0;
         }
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PilotId { get; set; }
         [Required]
         [MaxLength(30)]
