@@ -6,6 +6,20 @@
     <title></title>
 </head>
 <body>
+    <form  method="get">
+        <div class="form-group">
+            <div class="input-group">
+                <input type="search" class="form-control" value="" />
+                <div class="input-group-append">
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                
+            </div>
+        </div>
+    </form>
+
     <table>
         <thead>
             <tr>
@@ -23,8 +37,9 @@
         <tbody>
             @foreach (var pilot in Model)
             {
+
                 <tr>
-                    <th id="btnShowModal" type="button">@pilot.PilotId </th>
+                    <th>@pilot.PilotId </th>
                     <th>@pilot.FirstName</th>
                     <th>@pilot.LastName</th>
                     <th>@pilot.Email </th>
@@ -32,9 +47,11 @@
                     <th>@pilot.PhoneNumber</th>
                     <th>@pilot.Weight</th>
                     <th>@pilot.PilotMemberships</th>
-                    <th></th>
+                    <th><button type="submit" id="btnShowModal" class="btn btn-primary button button4">Modify</button></th>
+                    <th><button type="submit" class="btn btn-primary button button4">Delete</button></th>
 
                 </tr>
+
             }
         </tbody>
     </table>
@@ -55,25 +72,27 @@
                     <div class="modal-body">
                         <form>
                             <div class="form-group">
-                              <a>FirstName</a>
+                                <a>FirstName</a>
                                 <input />
                             </div>
                             <div class="form-group">
                                 <a>Lastname</a>
                                 <input />
                             </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary button button4">Validate</button>
+                            </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary button button4">Modify</button>
-                        <button type="submit" class="btn btn-primary button button4">Delete</button>
+
+
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
-
+  
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
 
@@ -92,6 +111,6 @@
             });
         });
     </script>
-
+    
 </body>
 </html>
