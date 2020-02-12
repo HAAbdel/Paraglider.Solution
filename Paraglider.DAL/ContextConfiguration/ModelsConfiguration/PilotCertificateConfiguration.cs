@@ -7,10 +7,11 @@ using System.Text;
 
 namespace Paraglider.DAL.ContextConfiguration.ModelsConfiguration
 {
-    class PilotConfiguration : IEntityTypeConfiguration<Pilot>
+    class PilotCertificateConfiguration : IEntityTypeConfiguration<PilotCertificate>
     {
-        public void Configure(EntityTypeBuilder<Pilot> builder)
+        public void Configure(EntityTypeBuilder<PilotCertificate> builder)
         {
+            builder.HasKey(sc => new { sc.CertificateId, sc.PilotId });
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Paraglider.DAL.ContextConfiguration.ModelsConfiguration
         public void Configure(EntityTypeBuilder<PilotMembership> builder)
         {
             builder.HasKey(sc => new { sc.PilotId, sc.MembershipId });
-            builder.HasOne(sc => sc.Membership).WithMany(p => p.PilotMemberships).IsRequired().OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(sc => sc.Membership).WithMany(p => p.PilotMemberships).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
