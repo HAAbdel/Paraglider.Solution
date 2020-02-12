@@ -11,5 +11,6 @@ namespace Paraglider.DAL.Models
         [Required]
         public string CerttificatName { get; set; }
         public IList<PilotCertificate> PilotCertificates { get; set; }
+        public IList<Traineeship> Traineeships { get; set; }
     }
 }
