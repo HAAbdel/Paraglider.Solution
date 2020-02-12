@@ -12,7 +12,11 @@ namespace Paraglider.DAL.Models
         public decimal Prize { get; set; }
         public DateTime DateOfEnd { get; set; }
         public DateTime DateOfStart { get; set; }
+        //Relation N-N With Pilot (A Trainnship can be followed by many pilots)
         public IList<PilotTraineeship> PilotTraineeships { get; set; }
+        //Relation 1-N to Certificate ( a specific traineeship can only lean to one certificate)
+        public int? CertificateId { get; set; }
+        public Certificate Certificate { get; set; }
 
     }
 }

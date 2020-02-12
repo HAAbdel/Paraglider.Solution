@@ -18,6 +18,7 @@ namespace Paraglider.DAL
             modelBuilder.ApplyConfiguration(new PilotCertificateConfiguration());
             modelBuilder.ApplyConfiguration(new PilotConfiguration());
             modelBuilder.ApplyConfiguration(new CertificateConfiguration());
+            modelBuilder.ApplyConfiguration(new TraineeshipConfiguration());
         }
         public DbSet<PilotCertificate> PilotCertificates { get; set; }
         public DbSet<PilotTraineeship> PilotTraineeships { get; set; }
@@ -26,6 +27,8 @@ namespace Paraglider.DAL
         public DbSet<Role> Roles { get; set; }
         public DbSet<Membership> Memberships {get;set;}
         public DbSet<Certificate> Certificates { get; set; }
+        public DbSet<Paraglinder> Paraglinders { get; set; }
+        public DbSet<ParaglinderModel> ParaglinderModels { get; set; }
 
     }
 }
