@@ -30,7 +30,13 @@ namespace ParagliderAPP.Controllers
             var model = _pilotRepository.GetPilotByName(name);
             return View(model);
         }
-    
+       
+        [HttpGet]
+        public ActionResult edit(int id)
+        {
+            var model = _pilotRepository.GetPilotByID(id);
+            return View("Edit",model);
+        }
 
 
     }
