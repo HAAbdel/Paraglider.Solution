@@ -7,11 +7,11 @@ using System.Text;
 
 namespace Paraglider.DAL.ContextConfiguration.ModelsConfiguration
 {
-    class CertificateConfiguration : IEntityTypeConfiguration<Certificate>
+    class RoleConfiguration : IEntityTypeConfiguration<Role>
     {
-        public void Configure(EntityTypeBuilder<Certificate> builder)
+        public void Configure(EntityTypeBuilder<Role> builder)
         {
-
+            builder.HasOne(sc => sc.Pilot).WithOne(s => s.Role).OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
