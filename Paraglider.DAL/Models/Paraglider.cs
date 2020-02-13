@@ -15,7 +15,8 @@ namespace Paraglider.DAL.Models
         public DateTime DateOfService { get; set; }
         [Column(TypeName = "DateTime")]
         public DateTime DateOfUse { get; set; }
-        public IList<ParagliderModel> ParagliderModels { get; set; }
+        public int ParagliderModelId { get; set; }
+        public ParagliderModel ParagliderModel { get; set; }
         public IList<Flight> Flights { get; set; }
     }
 }

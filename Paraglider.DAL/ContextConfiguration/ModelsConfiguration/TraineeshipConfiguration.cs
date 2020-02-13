@@ -12,6 +12,7 @@ namespace Paraglider.DAL.ContextConfiguration.ModelsConfiguration
         public void Configure(EntityTypeBuilder<Traineeship> builder)
         {
             builder.HasOne(sc => sc.Certificate).WithMany(s => s.Traineeships).HasForeignKey(g => g.CertificateId);
+            builder.HasOne(sc => sc.Level).WithMany(s => s.Traineeships).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

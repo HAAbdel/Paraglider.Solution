@@ -24,8 +24,6 @@ namespace Paraglider.DAL.Models
         [Required]
         [Column(TypeName = "decimal(8,1)")]
         public decimal FlightHours { get; set; }
-        [Required]
-        public int ParagliderId { get; set; }
-        public Models.Paraglider Paraglider { get; set; }
+        public IList<Paraglider> Paragliders { get; set; }
     }
 }

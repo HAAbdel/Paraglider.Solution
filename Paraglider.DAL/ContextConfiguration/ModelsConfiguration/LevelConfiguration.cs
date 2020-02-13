@@ -7,11 +7,11 @@ using System.Text;
 
 namespace Paraglider.DAL.ContextConfiguration.ModelsConfiguration
 {
-    class LandingSiteConfiguration : IEntityTypeConfiguration<LandingSite>
+    class LevelConfiguration : IEntityTypeConfiguration<Level>
     {
-        public void Configure(EntityTypeBuilder<LandingSite> builder)
+        public void Configure(EntityTypeBuilder<Level> builder)
         {
-            builder.HasOne(sc => sc.Level).WithMany(sc => sc.LandingSites).OnDelete(DeleteBehavior.Restrict);
+           
         }
     }
 }

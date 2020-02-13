@@ -12,5 +12,7 @@ namespace Paraglider.DAL.Models
         public string Approach { get; set; }
 
         public IList<Flight> Flights { get; set; }
+        public int LevelId { get; set; }
+        public Level Level { get; set; }
     }
 }

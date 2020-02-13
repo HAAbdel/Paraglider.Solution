@@ -18,5 +18,8 @@ namespace Paraglider.DAL.Models
         public int? CertificateId { get; set; }
         public Certificate Certificate { get; set; }
 
+        public int LevelId { get; set; }
+        public Level Level { get; set; }
+
     }
 }
