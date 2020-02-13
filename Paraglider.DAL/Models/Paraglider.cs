@@ -9,12 +9,11 @@ namespace Paraglider.DAL.Models
     public class Paraglider
     {
         public int ParagliderId { get; set; }
-        [Required]
-        public string Brand { get; set; }
         [Column(TypeName = "DateTime")]
         public DateTime DateOfService { get; set; }
         [Column(TypeName = "DateTime")]
         public DateTime DateOfUse { get; set; }
+        [Required]
         public int ParagliderModelId { get; set; }
         public ParagliderModel ParagliderModel { get; set; }
         public IList<Flight> Flights { get; set; }

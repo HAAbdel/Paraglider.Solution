@@ -9,7 +9,8 @@ namespace Paraglider.DAL.Models
     {
         public int PilotId { get; set; }
         public Pilot Pilot { get; set; }
-
+        [Required]
+        public bool IsTreacher { get; set; }
         [Required]
         public bool FollowExam { get; set; }
 

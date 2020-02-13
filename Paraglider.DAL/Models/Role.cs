@@ -9,8 +9,8 @@ namespace Paraglider.DAL.Models
     public class Role
     {
         public int RoleId { get; set; }
+        [Required]
         public string RoleName { get; set; }
-        public int PilotId { get; set; }
         public Pilot Pilot { get; set; }
     }
 }

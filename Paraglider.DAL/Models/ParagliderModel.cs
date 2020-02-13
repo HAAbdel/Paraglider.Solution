@@ -9,6 +9,7 @@ namespace Paraglider.DAL.Models
     public class ParagliderModel
     {
         public int ParagliderModelId { get; set; }
+        [Required]
         public int NumberOfHomologation { get; set; }
         [Column(TypeName = "DateTime")]
         public DateTime DateOfHomologation { get; set; }

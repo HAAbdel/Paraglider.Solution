@@ -15,7 +15,7 @@ namespace Paraglider.DAL.Models
         [Required]
         public int PilotId { get; set; }
         public Pilot Pilot { get; set; }
-
+        [Required]
         [Column(TypeName ="DateTime")]
         public DateTime FlightDate { get; set; }
         public int FlightDuration { get; set; }

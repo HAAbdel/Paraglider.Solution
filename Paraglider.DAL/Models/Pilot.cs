@@ -28,6 +28,7 @@ namespace Paraglider.DAL.Models
         [Required]
         [Column(TypeName = "decimal(3,1)")]
         public decimal Weight { get; set; }
+        public int RoleId { get; set; }
         public Role Role { get; set; }
         [Required]
         public IList<PilotMembership> PilotMemberships { get; set; }
