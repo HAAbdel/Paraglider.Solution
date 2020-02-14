@@ -11,6 +11,7 @@ namespace Paraglider.DAL.ContextConfiguration.ModelsConfiguration
     {
         public void Configure(EntityTypeBuilder<Role> builder)
         {
+            builder.HasOne(sc => sc.Pilot).WithOne(s => s.Role).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Paraglider.DAL
         public DbSet<PilotTraineeship> PilotTraineeships { get; set; }
         public DbSet<PilotMembership> PilotMemberships { get; set; }
         public DbSet<Pilot> Pilots { get; set; }
-        //public DbSet<Role> Roles { get; set; }
+        public DbSet<Role> Roles { get; set; }
         public DbSet<Membership> Memberships { get; set; }
         public DbSet<Certificate> Certificates { get; set; }
         public DbSet<Models.Paraglider> Paragliders { get; set; }
@@ -35,38 +35,32 @@ namespace Paraglider.DAL
             modelBuilder.ApplyConfiguration(new LaunchingSiteConfiguration());
             modelBuilder.ApplyConfiguration(new LandingSiteConfiguration());
             modelBuilder.ApplyConfiguration(new ParagliderConfig());
-            //modelBuilder.ApplyConfiguration(new RoleConfiguration());
+            modelBuilder.ApplyConfiguration(new RoleConfiguration());
             modelBuilder.ApplyConfiguration(new PilotConfiguration());
 
-            SeedingDataBase(modelBuilder);
+            SeedingRole(modelBuilder);
+            SeedingPilot(modelBuilder);
            
         }
-        public void SeedingDataBase(ModelBuilder modelBuilder)
+        public void SeedingRole(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Membership>().HasData(new Membership()
-            {
-                MembershipId = 1,
-                MembershipAmount = 125,
-            });
             modelBuilder.Entity<Role>().HasData(new Role()
             {
                 RoleId = 1,
                 RoleName = "CEO"
             });
+        }
+        public void SeedingPilot(ModelBuilder modelBuilder)
+        {
             modelBuilder.Entity<Pilot>().HasData(new Pilot()
             {
                 PilotId = 1,
-                FirstName = "Abdel",
-                LastName = "Hnini",
-                Weight = 85,
-                PhoneNumber = "0487044879",
+                FirstName = "",
+                LastName = "",
+                PhoneNumber = "0499999999",
+                Email = "A@b.com",
+                Weight = 80,
                 Role = null
-            });
-            modelBuilder.Entity<PilotMembership>().HasData(new PilotMembership()
-            {
-                DateOfPay = DateTime.Now,
-                PilotId = 1,
-                MembershipId = 1
             });
         }
     }
