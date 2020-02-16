@@ -15,6 +15,9 @@ namespace Paraglider.DAL.Models
         public DateTime DateOfUse { get; set; }
         [Required]
         public int ParagliderModelId { get; set; }
+        [Required]
+        [Column(TypeName = "decimal(8,1)")]
+        public decimal FlightHours { get; set; }
         public ParagliderModel ParagliderModel { get; set; }
         public IList<Flight> Flights { get; set; }
     }

@@ -19,12 +19,10 @@ namespace Paraglider.DAL.Models
         [Column(TypeName ="DateTime")]
         public DateTime FlightDate { get; set; }
         public int FlightDuration { get; set; }
+        [Required]
+        public int SiteId { get; set; }
+        public Site Site { get; set; }
 
-        [Required]
-        public int LandingSiteId { get; set; }
-        public LandingSite LandingSite { get; set; }
-        [Required]
-        public int LaunchingSiteId { get; set; }
-        public LaunchingSite LaunchingSite { get; set; }
+
     }
 }

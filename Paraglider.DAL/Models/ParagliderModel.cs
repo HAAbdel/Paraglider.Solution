@@ -10,7 +10,11 @@ namespace Paraglider.DAL.Models
     {
         public int ParagliderModelId { get; set; }
         [Required]
-        public int NumberOfHomologation { get; set; }
+        public string ModelType { get; set; }
+        [Required]
+        public string ModelName { get; set; }
+        [Required]
+        public string NumberOfHomologation { get; set; }
         [Column(TypeName = "DateTime")]
         public DateTime DateOfHomologation { get; set; }
         [Required]
@@ -22,9 +26,6 @@ namespace Paraglider.DAL.Models
         [Required]
         [Column(TypeName = "decimal(3,1)")]
         public decimal MaximumWeight { get; set; }
-        [Required]
-        [Column(TypeName = "decimal(8,1)")]
-        public decimal FlightHours { get; set; }
         public IList<Paraglider> Paragliders { get; set; }
     }
 }

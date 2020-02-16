@@ -14,6 +14,8 @@ namespace Paraglider.DAL.Models
         }
         public int PilotId { get; set; }
         [Required]
+        public bool IsActive { get; set; }
+        [Required]
         [MaxLength(30)]
         [MinLength(3)]
         public string FirstName { get; set; }
@@ -28,7 +30,7 @@ namespace Paraglider.DAL.Models
         [Required]
         [Column(TypeName = "decimal(3,1)")]
         public decimal Weight { get; set; }
-        public int? RoleId { get; set; }
+        public int RoleId { get; set; }
         [DisplayFormat(NullDisplayText = "No Role")]
         public Role Role { get; set; }
         [Required]

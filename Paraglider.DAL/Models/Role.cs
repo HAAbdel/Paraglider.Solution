@@ -10,6 +10,7 @@ namespace Paraglider.DAL.Models
     {
         public int RoleId { get; set; }
         [Required]
+        public bool IsActive { get; set; }
         public string RoleName { get; set; }
         public Pilot Pilot { get; set; }
     }
