@@ -9,9 +9,15 @@ namespace Paraglider.DAL.ContextConfiguration.ModelsConfiguration
 {
     class PilotConfiguration : IEntityTypeConfiguration<Pilot>
     {
-        public void Configure(EntityTypeBuilder<Pilot> builder)
+        public void Configure(EntityTypeBuilder<Pilot> entity)
         {
-            builder.HasOne(s => s.Role).WithOne(d => d.Pilot).OnDelete(DeleteBehavior.Restrict);
+            entity.HasOne<Role>(p => p.Role)
+                .WithOne(c => c.Pilot)
+                .HasForeignKey<Pilot>(l => l.RoleId);
+            entity.Property(p => p.Weight)
+                .HasColumnType("decimal(5,2)")
+                .IsRequired(true);
+            
         }
     }
 }

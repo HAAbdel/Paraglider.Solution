@@ -7,18 +7,18 @@ using System.Text;
 
 namespace Paraglider.DAL.ContextConfiguration.ModelsConfiguration
 {
-    class LandingSiteConfiguration : IEntityTypeConfiguration<LandingSite>
+    class CertificateeConfiguration : IEntityTypeConfiguration<Certificate>
     {
-        public void Configure(EntityTypeBuilder<LandingSite> entity)
+        public void Configure(EntityTypeBuilder<Certificate> entity)
         {
-            entity.HasOne(p => p.Site)
-                .WithMany(c => c.LandingSites)
-                .HasForeignKey(k => k.SiteId)
+            entity.HasMany(sc => sc.PilotCertificates)
+                .WithOne(s => s.Certificate)
+                .HasForeignKey(k => k.CertificateId)
                 .IsRequired(true)
                 .OnDelete(DeleteBehavior.Restrict);
-            entity.HasOne(p => p.Level)
-                .WithMany(c => c.LandingSites)
-                .HasForeignKey(k => k.LevelId)
+            entity.HasMany(sc => sc.Traineeships)
+                .WithOne(s => s.Certificate)
+                .HasForeignKey(k => k.CertificateId)
                 .IsRequired(true)
                 .OnDelete(DeleteBehavior.Restrict);
         }

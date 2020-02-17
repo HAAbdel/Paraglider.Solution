@@ -13,7 +13,14 @@ namespace Paraglider.DAL.ContextConfiguration.ModelsConfiguration
         {
             entity.HasQueryFilter(p => p.IsActive);
 
-            entity.Property(p => p.DateOfHomologation).HasColumnType("date");
+            entity.Property(p => p.DateOfHomologation)
+                .HasColumnType("date");
+            entity.Property(p => p.Size)
+                .HasColumnType("decimal(5,2)");
+            entity.Property(p => p.MinimalWeight)
+                .HasColumnType("decimal(5,2)");
+            entity.Property(p => p.MaximumWeight)
+                .HasColumnType("decimal(5,2)");
 
             entity.HasMany(p => p.Paragliders)
                 .WithOne(p => p.ParagliderModel)

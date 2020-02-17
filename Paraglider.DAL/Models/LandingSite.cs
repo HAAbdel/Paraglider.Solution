@@ -13,7 +13,6 @@ namespace Paraglider.DAL.Models
         public int LevelId { get; set; }
         public Level Level { get; set; }
         public string Approach { get; set; }
-        [Required]
         public int SiteId { get; set; }
         public Site Site { get; set; }
     }

@@ -15,6 +15,7 @@ namespace Paraglider.DAL.ContextConfiguration.ModelsConfiguration
 
             entity.Property(p => p.DateOfService).HasColumnType("date");
             entity.Property(p => p.DateOfUse).HasColumnType("date");
+            entity.Property(p => p.FlightHours).HasColumnType("decimal(5,2)");
 
             entity.HasOne(p => p.ParagliderModel)
                 .WithMany(p => p.Paragliders)

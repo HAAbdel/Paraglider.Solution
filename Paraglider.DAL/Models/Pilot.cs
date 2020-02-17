@@ -8,10 +8,6 @@ namespace Paraglider.DAL.Models
 {
     public class Pilot
     {
-        public Pilot()
-        {
-            Weight = 0;
-        }
         public int PilotId { get; set; }
         [Required]
         public bool IsActive { get; set; }
