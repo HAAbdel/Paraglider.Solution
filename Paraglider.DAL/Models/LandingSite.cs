@@ -11,6 +11,8 @@ namespace Paraglider.DAL.Models
         [Required]
         [MaxLength(30)]
         public string LandingSiteName { get; set; }
+        public int LevelId { get; set; }
+        public Level Level { get; set; }
         [MaxLength(300)]
         public string Approach { get; set; }
         [Required]

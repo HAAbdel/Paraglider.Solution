@@ -11,7 +11,7 @@ namespace Paraglider.DAL.Models
         public int MembershipId { get; set; }
         [Column(TypeName = "decimal(5,2)")]
         public decimal MembershipAmount { get; set; }
-        public bool IsActiv { get; set; }
+        public bool IsActive { get; set; }
         [Required]
         public IList<PilotMembership> PilotMemberships { get; set; }
     }

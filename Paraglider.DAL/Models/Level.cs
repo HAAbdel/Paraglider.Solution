@@ -13,7 +13,6 @@ namespace Paraglider.DAL.Models
         public string Name { get; set; }
         [MaxLength(80)]
         public string Description { get; set; }
-
         public IList<Traineeship> Traineeships { get; set; }
         public IList<LandingSite> LandingSites { get; set; }
         public IList<LaunchingSite> LaunchingSites { get; set; }

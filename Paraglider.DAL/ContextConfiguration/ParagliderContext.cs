@@ -46,28 +46,28 @@ namespace Paraglider.DAL
         public void SeedingRoles(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Role>().HasData(
-                new Role() { RoleId = 0, RoleName = "No Role", IsActive = true},
-                new Role() { RoleId = 1, RoleName = "CEO", IsActive = true},
-                new Role() { RoleId = 2, RoleName = "Manager", IsActive = true},
-                new Role() { RoleId = 3, RoleName = "Secretary", IsActive = false}
+                new Role() { RoleId = 1, RoleName = "No Role", IsActive = true},
+                new Role() { RoleId = 2, RoleName = "CEO", IsActive = true},
+                new Role() { RoleId = 3, RoleName = "Manager", IsActive = true},
+                new Role() { RoleId = 4, RoleName = "Secretary", IsActive = false}
             );
         }
         public void SeedingPilots(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Pilot>().HasData(
-                new Pilot() { PilotId = 1, FirstName = "Abdel", LastName = "Hnini", PhoneNumber = "0499999999", Email = "A@h.com", Weight = 80, RoleId = 0 },
-                new Pilot() { PilotId = 2, FirstName = "Yves", LastName = "Blavier", PhoneNumber = "0488888888", Email = "Y@b.com", Weight = 75, RoleId = 1},
-                new Pilot() { PilotId = 3, FirstName = "Antho", LastName = "Truc", PhoneNumber = "0477777777", Email = "A@t.be", Weight = 58, RoleId = 2},
-                new Pilot() { PilotId = 4, FirstName = "Lucky", LastName = "Str", PhoneNumber = "0466666666", Email = "L@S.be", Weight = 64, RoleId = 0}
+                new Pilot() { PilotId = 1, FirstName = "Abdel", LastName = "Hnini", PhoneNumber = "0499999999", Email = "A@h.com", Weight = 80, RoleId = 1, IsActive = true },
+                new Pilot() { PilotId = 2, FirstName = "Yves", LastName = "Blavier", PhoneNumber = "0488888888", Email = "Y@b.com", Weight = 75, RoleId = 2, IsActive = true},
+                new Pilot() { PilotId = 3, FirstName = "Antho", LastName = "Truc", PhoneNumber = "0477777777", Email = "A@t.be", Weight = 58, RoleId = 3, IsActive = true},
+                new Pilot() { PilotId = 4, FirstName = "Lucky", LastName = "Str", PhoneNumber = "0466666666", Email = "L@S.be", Weight = 64, RoleId = 1, IsActive = true}
                 );
         }
         public void SeedingMembers(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Membership>().HasData(
-                new Membership() { MembershipId = 1, MembershipAmount = (decimal)128.2, IsActiv = true },
-                new Membership() { MembershipId = 2, MembershipAmount = (decimal)54.99, IsActiv = true},
-                new Membership() { MembershipId = 3, MembershipAmount = (decimal)88.25, IsActiv = false},
-                new Membership() { MembershipId = 4, MembershipAmount = 220, IsActiv = true}
+                new Membership() { MembershipId = 1, MembershipAmount = (decimal)128.2, IsActive = true },
+                new Membership() { MembershipId = 2, MembershipAmount = (decimal)54.99, IsActive = true},
+                new Membership() { MembershipId = 3, MembershipAmount = (decimal)88.25, IsActive = false},
+                new Membership() { MembershipId = 4, MembershipAmount = 220, IsActive = true}
             );
         }
         public void SeedingLevels(ModelBuilder modelBuilder)
@@ -131,8 +131,14 @@ namespace Paraglider.DAL
         }
         public void SeedingCertificate(ModelBuilder modelBuilder)
         {
-
-        }
+            modelBuilder.Entity<Certificate>().HasData(
+                new Certificate() { CertificateId = 1, CerttificatName = "No grade"},
+                new Certificate() { CertificateId = 2, CerttificatName = "Begginer"},
+                new Certificate() { CertificateId = 3, CerttificatName = "Medior"},
+                new Certificate() { CertificateId = 4, CerttificatName = "Advanced"},
+                new Certificate() { CertificateId = 5, CerttificatName = "Master"}
+                );
+    }
         public void SeedingTraineeship(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Traineeship>().HasData(
@@ -141,7 +147,34 @@ namespace Paraglider.DAL
                 new  Traineeship() { TraineeshipId = 3, Prize = (decimal)80.99, DateOfEnd = new DateTime(2020,03,18) , DateOfStart = new DateTime(2020,01,27) , CertificateId = null, LevelId = 3},
                 new  Traineeship() { TraineeshipId = 4, Prize = (decimal)123.99, DateOfEnd = new DateTime(2019,12,08) , DateOfStart = new DateTime(2019,09,16) , CertificateId = null, LevelId = 3},
                 new  Traineeship() { TraineeshipId = 5, Prize = 49, DateOfEnd = new DateTime(2018,08,31) , DateOfStart = new DateTime(2018,08,01) , CertificateId = null, LevelId = 2},
-                new Traineeship() { TraineeshipId = 6, Prize = (decimal)199.99, DateOfEnd = new DateTime(2018,04,12), DateOfStart = new DateTime(2018,01,08), CertificateId = null, LevelId = 5}
+                new Traineeship() { TraineeshipId = 6, Prize = (decimal)199.99, DateOfEnd = new DateTime(2018,04,12), DateOfStart = new DateTime(2018,01,08), CertificateId = null, LevelId = 4}
+                );
+        }
+        public void SeedingPilotCertificate(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<PilotCertificate>().HasData(
+                new PilotCertificate() { PilotId = 1, DateOfSucc = new DateTime(2018, 1, 1), CertificateId = 1},
+                new PilotCertificate() { PilotId = 2, DateOfSucc = new DateTime(2018, 2, 20), CertificateId = 2},
+                new PilotCertificate() { PilotId = 3, DateOfSucc = new DateTime(2019, 09, 18), CertificateId = 3},
+                new PilotCertificate() { PilotId = 4, DateOfSucc = new DateTime(2019, 05, 02), CertificateId = 4}
+                );
+        }
+        public void SeedingPilotMembership(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<PilotMembership>().HasData(
+                new PilotMembership () { PilotId = 1, DateOfPay = new DateTime(), MembershipId = 2},
+                new PilotMembership () { PilotId = 2, DateOfPay = new DateTime(), MembershipId = 4},
+                new PilotMembership () { PilotId = 3, DateOfPay = new DateTime(), MembershipId = 3},
+                new PilotMembership() { PilotId = 4, DateOfPay = new DateTime(), MembershipId = 1}
+                );
+        }
+        public void SeedingPilotTraineeship(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<PilotTraineeship>().HasData(
+                new PilotTraineeship() { PilotId = 1, IsTreacher = false,FollowExam = false,TraineeshipId = 1},
+                new PilotTraineeship() { PilotId = 2, IsTreacher = true,FollowExam = false,TraineeshipId = 2},
+                new PilotTraineeship() { PilotId = 3, IsTreacher = false,FollowExam = true,TraineeshipId = 6},
+                new PilotTraineeship() { PilotId = 4, IsTreacher = true, FollowExam = false, TraineeshipId = 3}
                 );
         }
     }

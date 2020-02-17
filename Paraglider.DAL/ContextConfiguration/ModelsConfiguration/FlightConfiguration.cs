@@ -11,8 +11,7 @@ namespace Paraglider.DAL.ContextConfiguration.ModelsConfiguration
     {
         public void Configure(EntityTypeBuilder<Flight> builder)
         {
-            builder.HasOne(sc => sc.LandingSite).WithMany(s => s.Flights).HasForeignKey(s => s.LandingSiteId);
-            builder.HasOne(sc => sc.LaunchingSite).WithMany(s => s.Flights).HasForeignKey(s => s.LaunchingSiteId);
+            
         }
     }
 }
