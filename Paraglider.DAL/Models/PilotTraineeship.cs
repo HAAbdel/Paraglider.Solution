@@ -13,8 +13,6 @@ namespace Paraglider.DAL.Models
         public bool IsTreacher { get; set; }
         [Required]
         public bool FollowExam { get; set; }
-
-
         public int TraineeshipId { get; set; }
         public Traineeship Traineeship { get; set; }
     }

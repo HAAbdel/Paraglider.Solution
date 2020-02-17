@@ -9,7 +9,6 @@ namespace Paraglider.DAL.Models
    public class Membership
     {
         public int MembershipId { get; set; }
-        [Column(TypeName = "decimal(5,2)")]
         public decimal MembershipAmount { get; set; }
         public bool IsActive { get; set; }
         [Required]

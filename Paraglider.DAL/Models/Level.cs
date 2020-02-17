@@ -9,9 +9,7 @@ namespace Paraglider.DAL.Models
     {
         public int LevelId { get; set; }
         [Required]
-        [MaxLength(30)]
         public string Name { get; set; }
-        [MaxLength(80)]
         public string Description { get; set; }
         public IList<Traineeship> Traineeships { get; set; }
         public IList<LandingSite> LandingSites { get; set; }

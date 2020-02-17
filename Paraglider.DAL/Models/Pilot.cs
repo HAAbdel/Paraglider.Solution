@@ -16,21 +16,16 @@ namespace Paraglider.DAL.Models
         [Required]
         public bool IsActive { get; set; }
         [Required]
-        [MaxLength(30)]
-        [MinLength(3)]
         public string FirstName { get; set; }
         [Required]
-        [MaxLength(30)]
-        [MinLength(3)]
         public string LastName { get; set; }
         [Phone]
         public string PhoneNumber { get; set; }
         [EmailAddress]
         public string Email { get; set; }
         [Required]
-        [Column(TypeName = "decimal(3,1)")]
         public decimal Weight { get; set; }
-        public int RoleId { get; set; }
+        public int? RoleId { get; set; }
         [DisplayFormat(NullDisplayText = "No Role")]
         public Role Role { get; set; }
         [Required]

@@ -7,20 +7,20 @@ using System.Text;
 
 namespace Paraglider.DAL.ContextConfiguration.ModelsConfiguration
 {
-    class ParagliderConfig : IEntityTypeConfiguration<Models.Paraglider>
+    internal class ParagliderModelConfig : IEntityTypeConfiguration<ParagliderModel>
     {
-        public void Configure(EntityTypeBuilder<Models.Paraglider> entity)
+        public void Configure(EntityTypeBuilder<ParagliderModel> entity)
         {
             entity.HasQueryFilter(p => p.IsActive);
 
-            entity.Property(p => p.DateOfService).HasColumnType("date");
-            entity.Property(p => p.DateOfUse).HasColumnType("date");
+            entity.Property(p => p.DateOfHomologation).HasColumnType("date");
 
-            entity.HasOne(p => p.ParagliderModel)
-                .WithMany(p => p.Paragliders)
+            entity.HasMany(p => p.Paragliders)
+                .WithOne(p => p.ParagliderModel)
                 .HasForeignKey(p => p.ParagliderModelId)
                 .IsRequired(true)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
+

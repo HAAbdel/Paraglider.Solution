@@ -9,6 +9,7 @@ namespace Paraglider.DAL.Models
     public class Flight
     {
         public int FlightId { get; set; }
+        public bool IsValide { get; set; }
         [Required]
         public int ParagliderId { get; set; }
         public Paraglider Paraglider { get; set; }
@@ -16,13 +17,10 @@ namespace Paraglider.DAL.Models
         public int PilotId { get; set; }
         public Pilot Pilot { get; set; }
         [Required]
-        [Column(TypeName ="DateTime")]
         public DateTime FlightDate { get; set; }
-        public int FlightDuration { get; set; }
+        public decimal FlightDuration { get; set; }
         [Required]
         public int SiteId { get; set; }
         public Site Site { get; set; }
-
-
     }
 }

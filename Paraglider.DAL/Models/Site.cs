@@ -8,9 +8,9 @@ namespace Paraglider.DAL.Models
     public class Site
     {
         public int SiteId { get; set; }
+        public bool IsActive { get; set; }
         [Required]
         public string CommuneName { get; set; }
-        [MaxLength(10)]
         public string Orientation { get; set; }
         public string ZipCode { get; set; }
         public string SiteGeoCoordinate { get; set; }

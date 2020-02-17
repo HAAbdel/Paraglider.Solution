@@ -9,10 +9,7 @@ namespace Paraglider.DAL.Models
     {
         public int LaunchingSiteId { get; set; }
         [Required]
-        [MaxLength(30)]
         public string LaunchingSiteName { get; set; }
-
-        [MaxLength(300)]
         public string Approach { get; set; }
         [Required]
         public int LevelId { get; set; }

@@ -9,10 +9,8 @@ namespace Paraglider.DAL.Models
     {
         public int PilotId { get; set; }
         public Pilot Pilot { get; set; }
-
         [Required]
         public DateTime DateOfPay { get; set; }
-
         public int MembershipId { get; set; }
         public Membership Membership { get; set; }
     }
