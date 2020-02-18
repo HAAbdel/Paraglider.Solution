@@ -9,7 +9,7 @@ namespace Paraglider.sl
     {
         IEnumerable<Pilot> GetAllPilots();
     }
-    public class InMemoryPilotData : IPilotData
+    public class InMemoryPilotData// : IPilotData
     {
         private readonly List<Pilot> _PilotList;
 
@@ -26,9 +26,9 @@ namespace Paraglider.sl
 
   
 
-        public IEnumerable<Pilot> GetAllPilots()
-        {
+        //public IEnumerable<Pilot> GetAllPilots()
+        //{
             
-        }
+        //}
     }
 }

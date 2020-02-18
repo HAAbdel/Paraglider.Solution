@@ -8,18 +8,22 @@ namespace Paraglider.DAL.Models
 {
     public class Flight
     {
+        //Primary Key
         public int FlightId { get; set; }
-        public bool IsValide { get; set; }
-        [Required]
-        public int ParagliderId { get; set; }
-        public Paraglider Paraglider { get; set; }
-        [Required]
-        public int PilotId { get; set; }
-        public Pilot Pilot { get; set; }
+        //Properties
         [Required]
         public DateTime FlightDate { get; set; }
         public decimal FlightDuration { get; set; }
+
+        //Soft delete
         [Required]
+        public bool IsValide { get; set; }
+
+        //Navigation properties
+        public int ParagliderId { get; set; }
+        public Paraglider Paraglider { get; set; }
+        public int PilotId { get; set; }
+        public Pilot Pilot { get; set; }
         public int SiteId { get; set; }
         public Site Site { get; set; }
     }

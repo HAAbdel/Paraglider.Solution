@@ -22,6 +22,11 @@ namespace Paraglider.DAL.ContextConfiguration.ModelsConfiguration
                 .HasForeignKey(p => p.ParagliderModelId)
                 .IsRequired(true)
                 .OnDelete(DeleteBehavior.Restrict);
+            builder.HasMany(fs => fs.Flights)
+                .WithOne(p => p.Paraglider)
+                .HasForeignKey(k => k.ParagliderId)
+                .IsRequired(false)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

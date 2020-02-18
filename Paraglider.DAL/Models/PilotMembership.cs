@@ -7,10 +7,12 @@ namespace Paraglider.DAL.Models
 {
     public class PilotMembership
     {
-        public int PilotId { get; set; }
-        public Pilot Pilot { get; set; }
+        //Properties
         [Required]
         public DateTime DateOfPay { get; set; }
+        //Navigation properties And CompositKey
+        public int PilotId { get; set; }
+        public Pilot Pilot { get; set; }
         public int MembershipId { get; set; }
         public Membership Membership { get; set; }
     }

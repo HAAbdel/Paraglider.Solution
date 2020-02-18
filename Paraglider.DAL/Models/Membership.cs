@@ -8,10 +8,13 @@ namespace Paraglider.DAL.Models
 {
    public class Membership
     {
+        //Primary key
         public int MembershipId { get; set; }
+        //properties
         public decimal MembershipAmount { get; set; }
-        public bool IsActive { get; set; }
+        //Soft delete
         [Required]
+        public bool IsActive { get; set; }
         public IList<PilotMembership> PilotMemberships { get; set; }
     }
 }

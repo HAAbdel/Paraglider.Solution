@@ -28,18 +28,21 @@ namespace Paraglider.DAL
         public DbSet<Site> Sites { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new CertificateeConfiguration());
+            modelBuilder.ApplyConfiguration(new FlightConfiguration());
+            modelBuilder.ApplyConfiguration(new LandingSiteConfiguration());
+            modelBuilder.ApplyConfiguration(new LaunchingSiteConfiguration());
+            modelBuilder.ApplyConfiguration(new LevelConfiguration());
+            modelBuilder.ApplyConfiguration(new MembershipConfiguration());
+            modelBuilder.ApplyConfiguration(new ParagliderConfig());
+            modelBuilder.ApplyConfiguration(new ParagliderModelConfig());
+            modelBuilder.ApplyConfiguration(new PilotCertificateConfiguration());
+            modelBuilder.ApplyConfiguration(new PilotConfiguration());
             modelBuilder.ApplyConfiguration(new PilotMembershipConfiguration());
             modelBuilder.ApplyConfiguration(new PilotTraineeshipConfiguration());
-            modelBuilder.ApplyConfiguration(new PilotCertificateConfiguration());
-            modelBuilder.ApplyConfiguration(new TraineeshipConfiguration());
-            modelBuilder.ApplyConfiguration(new FlightConfiguration());
-            modelBuilder.ApplyConfiguration(new LaunchingSiteConfiguration());
-            modelBuilder.ApplyConfiguration(new LandingSiteConfiguration());
-            modelBuilder.ApplyConfiguration(new ParagliderConfig());
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
-            modelBuilder.ApplyConfiguration(new PilotConfiguration());
-            modelBuilder.ApplyConfiguration(new ParagliderModelConfig());
-            modelBuilder.ApplyConfiguration(new MembershipConfiguration());
+            modelBuilder.ApplyConfiguration(new SiteConfiguration());
+            modelBuilder.ApplyConfiguration(new TraineeshipConfiguration());
 
             SeedingRoles(modelBuilder);
             SeedingPilots(modelBuilder);
@@ -60,15 +63,15 @@ namespace Paraglider.DAL
         public void SeedingRoles(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Role>().HasData(
-                new Role() { RoleId = 1, RoleName = "CEO", IsActive = true},
-                new Role() { RoleId = 2, RoleName = "Manager", IsActive = true},
-                new Role() { RoleId = 3, RoleName = "Secretary", IsActive = false}
+                new Role() { RoleId = 1, RoleName = "CEO", IsActive = true, PilotId = 1},
+                new Role() { RoleId = 2, RoleName = "Manager", IsActive = true, PilotId = 2},
+                new Role() { RoleId = 3, RoleName = "Secretary", IsActive = false , PilotId = 3}
             );
         }
         public void SeedingPilots(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Pilot>().HasData(
-                new Pilot() { PilotId = 1, FirstName = "Abdel", LastName = "Hnini", PhoneNumber = "0499999999", Email = "A@h.com", Weight = 80, RoleId = null, IsActive = true },
+                new Pilot() { PilotId = 1, FirstName = "Abdel", LastName = "Hnini", PhoneNumber = "0499999999", Email = "A@h.com", Weight = 80, RoleId = 3, IsActive = true },
                 new Pilot() { PilotId = 2, FirstName = "Yves", LastName = "Blavier", PhoneNumber = "0488888888", Email = "Y@b.com", Weight = 75, RoleId = 1, IsActive = true},
                 new Pilot() { PilotId = 3, FirstName = "Antho", LastName = "Truc", PhoneNumber = "0477777777", Email = "A@t.be", Weight = 58, RoleId = 2, IsActive = true},
                 new Pilot() { PilotId = 4, FirstName = "Lucky", LastName = "Str", PhoneNumber = "0466666666", Email = "L@S.be", Weight = 64, RoleId = null, IsActive = true}
@@ -123,23 +126,23 @@ namespace Paraglider.DAL
         public void SeedingLaunchingSite(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<LaunchingSite>().HasData(
-                new LaunchingSite() { LaunchingSiteId = 1, LaunchingSiteName = "Main 7 Meuses launching site" , Approach = "" , SiteId = 2, LevelId = 1 }, 
-                new LaunchingSite() { LaunchingSiteId = 2, LaunchingSiteName = "Main West Coo launching site" , Approach = "" , SiteId = 1, LevelId = 1 },
-                new LaunchingSite() { LaunchingSiteId = 3, LaunchingSiteName = "Main Prayon laucnhing site" , Approach = "" , SiteId = 3, LevelId = 1 }, 
-                new LaunchingSite() { LaunchingSiteId = 4, LaunchingSiteName = "Main Beauraing launching site", Approach = ""  , SiteId = 4, LevelId = 1 } 
+                new LaunchingSite() { LaunchingSiteId = 1, LaunchingSiteName = "Main 7 Meuses launching site" , Approach = "" , SiteId = 2, LevelId = 1, IsActive = true }, 
+                new LaunchingSite() { LaunchingSiteId = 2, LaunchingSiteName = "Main West Coo launching site" , Approach = "" , SiteId = 1, LevelId = 1, IsActive = true },
+                new LaunchingSite() { LaunchingSiteId = 3, LaunchingSiteName = "Main Prayon laucnhing site" , Approach = "" , SiteId = 3, LevelId = 1, IsActive = true }, 
+                new LaunchingSite() { LaunchingSiteId = 4, LaunchingSiteName = "Main Beauraing launching site", Approach = ""  , SiteId = 4, LevelId = 1, IsActive = true } 
                 );
         }
         public void SeedingLlandingSite(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<LandingSite>().HasData(
-                new LandingSite() { LandingSiteId = 1, LandingSiteName = "Sommet" , Approach = "", SiteId = 2 , LevelId = 1},
-                new LandingSite() { LandingSiteId = 2, LandingSiteName = "West landing site" , Approach = "", SiteId = 2, LevelId = 1 },
-                new LandingSite() { LandingSiteId = 3, LandingSiteName = "Delta" , Approach = "", SiteId = 1, LevelId = 1 },
-                new LandingSite() { LandingSiteId = 4, LandingSiteName = "Hallage" , Approach = "", SiteId = 1, LevelId = 1 },
-                new LandingSite() { LandingSiteId = 5, LandingSiteName = "Main landing site", Approach = "", SiteId = 3, LevelId = 1 },
-                new LandingSite() { LandingSiteId = 6, LandingSiteName = "Au Sommet", Approach = "", SiteId = 4, LevelId = 1 },
-                new LandingSite() { LandingSiteId = 7, LandingSiteName = "Landung site 1", Approach = "", SiteId = 4, LevelId = 1 },
-                new LandingSite() { LandingSiteId = 8, LandingSiteName = "Landing site 2", Approach = "", SiteId = 4, LevelId = 1 }
+                new LandingSite() { LandingSiteId = 1, LandingSiteName = "Sommet" , Approach = "", SiteId = 2 , LevelId = 1, IsActive = true},
+                new LandingSite() { LandingSiteId = 2, LandingSiteName = "West landing site" , Approach = "", SiteId = 2, LevelId = 1, IsActive = true },
+                new LandingSite() { LandingSiteId = 3, LandingSiteName = "Delta" , Approach = "", SiteId = 1, LevelId = 1, IsActive = true },
+                new LandingSite() { LandingSiteId = 4, LandingSiteName = "Hallage" , Approach = "", SiteId = 1, LevelId = 1, IsActive = true },
+                new LandingSite() { LandingSiteId = 5, LandingSiteName = "Main landing site", Approach = "", SiteId = 3, LevelId = 1, IsActive = true },
+                new LandingSite() { LandingSiteId = 6, LandingSiteName = "Au Sommet", Approach = "", SiteId = 4, LevelId = 1, IsActive = true },
+                new LandingSite() { LandingSiteId = 7, LandingSiteName = "Landung site 1", Approach = "", SiteId = 4, LevelId = 1, IsActive = true },
+                new LandingSite() { LandingSiteId = 8, LandingSiteName = "Landing site 2", Approach = "", SiteId = 4, LevelId = 1, IsActive = true }
                 );
         }
         public void SeedingCertificate(ModelBuilder modelBuilder)

@@ -11,18 +11,26 @@ namespace Paraglider.DAL.ContextConfiguration.ModelsConfiguration
     {
         public void Configure(EntityTypeBuilder<Flight> builder)
         {
-            builder.HasOne(p => p.Site)
-                .WithMany(p => p.Flights)
-                .HasForeignKey(p => p.SiteId)
+            builder.HasOne(p => p.Paraglider)
+                .WithMany(fs => fs.Flights)
+                .HasForeignKey(k => k.ParagliderId)
                 .IsRequired(true)
                 .OnDelete(DeleteBehavior.Restrict);
             builder.HasOne(p => p.Pilot)
-                .WithMany(p => p.Flights)
-                .HasForeignKey(p => p.PilotId)
+                .WithMany(fs => fs.Flights)
+                .HasForeignKey(k => k.PilotId)
                 .IsRequired(true)
                 .OnDelete(DeleteBehavior.Restrict);
-            builder.Property(sc => sc.FlightDate).HasColumnType("date");
-            builder.Property(sc => sc.FlightDuration).HasColumnType("decimal(5,2)");
+            builder.HasOne(s => s.Site)
+                .WithMany(fs => fs.Flights)
+                .HasForeignKey(k => k.SiteId)
+                .IsRequired(true)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Property(sc => sc.FlightDate)
+                .HasColumnType("date");
+            builder.Property(sc => sc.FlightDuration)
+                .HasColumnType("decimal(5,2)");
         }
     }
 }

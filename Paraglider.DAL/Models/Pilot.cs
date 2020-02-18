@@ -8,8 +8,11 @@ namespace Paraglider.DAL.Models
 {
     public class Pilot
     {
+        //Primary key
         public int PilotId { get; set; }
+        //Soft delete
         [Required]
+        //Properties
         public bool IsActive { get; set; }
         [Required]
         public string FirstName { get; set; }
@@ -21,10 +24,9 @@ namespace Paraglider.DAL.Models
         public string Email { get; set; }
         [Required]
         public decimal Weight { get; set; }
+        //Navigation Properties
         public int? RoleId { get; set; }
-        [DisplayFormat(NullDisplayText = "No Role")]
         public Role Role { get; set; }
-        [Required]
         public IList<PilotMembership> PilotMemberships { get; set; }
         public IList<PilotTraineeship> PilotTraineeships { get; set; }
         public IList<PilotCertificate> PilotCertificates { get; set; }

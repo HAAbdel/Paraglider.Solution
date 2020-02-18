@@ -18,6 +18,11 @@ namespace Paraglider.DAL.ContextConfiguration.ModelsConfiguration
             builder.Property(p => p.Prize)
                 .HasColumnType("decimal(5,2)");
 
+            builder.HasMany(pts => pts.PilotTraineeships)
+                .WithOne(t => t.Traineeship)
+                .HasForeignKey(k => k.TraineeshipId)
+                .IsRequired(false)
+                .OnDelete(DeleteBehavior.Restrict);
             builder.HasOne(c => c.Certificate)
                 .WithMany(ts => ts.Traineeships)
                 .HasForeignKey(k => k.CertificateId)
