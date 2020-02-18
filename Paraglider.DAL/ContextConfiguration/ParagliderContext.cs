@@ -39,6 +39,7 @@ namespace Paraglider.DAL
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
             modelBuilder.ApplyConfiguration(new PilotConfiguration());
             modelBuilder.ApplyConfiguration(new ParagliderModelConfig());
+            modelBuilder.ApplyConfiguration(new MembershipConfiguration());
 
             SeedingRoles(modelBuilder);
             SeedingPilots(modelBuilder);

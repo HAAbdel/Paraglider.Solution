@@ -9,15 +9,15 @@ namespace Paraglider.DAL.ContextConfiguration.ModelsConfiguration
 {
     class ParagliderConfig : IEntityTypeConfiguration<Models.Paraglider>
     {
-        public void Configure(EntityTypeBuilder<Models.Paraglider> entity)
+        public void Configure(EntityTypeBuilder<Models.Paraglider> builder)
         {
-            entity.HasQueryFilter(p => p.IsActive);
+            builder.HasQueryFilter(p => p.IsActive);
 
-            entity.Property(p => p.DateOfService).HasColumnType("date");
-            entity.Property(p => p.DateOfUse).HasColumnType("date");
-            entity.Property(p => p.FlightHours).HasColumnType("decimal(5,2)");
+            builder.Property(p => p.DateOfService).HasColumnType("date");
+            builder.Property(p => p.DateOfUse).HasColumnType("date");
+            builder.Property(p => p.FlightHours).HasColumnType("decimal(5,2)");
 
-            entity.HasOne(p => p.ParagliderModel)
+            builder.HasOne(p => p.ParagliderModel)
                 .WithMany(p => p.Paragliders)
                 .HasForeignKey(p => p.ParagliderModelId)
                 .IsRequired(true)

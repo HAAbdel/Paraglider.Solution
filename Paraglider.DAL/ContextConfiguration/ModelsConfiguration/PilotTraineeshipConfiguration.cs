@@ -12,7 +12,17 @@ namespace Paraglider.DAL.ContextConfiguration.ModelsConfiguration
         public void Configure(EntityTypeBuilder<PilotTraineeship> builder)
         {
             builder.HasKey(sc => new { sc.PilotId, sc.TraineeshipId });
-            builder.HasOne(sc => sc.Traineeship).WithMany(p => p.PilotTraineeships).IsRequired().OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasOne(p => p.Pilot)
+                .WithMany(c => c.PilotTraineeships)
+                .HasForeignKey(k => k.PilotId)
+                .IsRequired(true)
+                .OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(p => p.Traineeship)
+                .WithMany(c => c.PilotTraineeships)
+                .HasForeignKey(k => k.TraineeshipId)
+                .IsRequired(true)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

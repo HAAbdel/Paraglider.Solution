@@ -11,7 +11,7 @@ namespace Paraglider.DAL.ContextConfiguration.ModelsConfiguration
     {
         public void Configure(EntityTypeBuilder<Role> builder)
         {
-            builder.HasOne(sc => sc.Pilot).WithOne(s => s.Role).OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(p => p.Pilot).WithOne(pr => pr.Role).HasForeignKey<Role>(fk => fk.RoleId);
         }
     }
 }

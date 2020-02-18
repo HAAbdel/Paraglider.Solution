@@ -9,14 +9,14 @@ namespace Paraglider.DAL.ContextConfiguration.ModelsConfiguration
 {
     class CertificateeConfiguration : IEntityTypeConfiguration<Certificate>
     {
-        public void Configure(EntityTypeBuilder<Certificate> entity)
+        public void Configure(EntityTypeBuilder<Certificate> builder)
         {
-            entity.HasMany(sc => sc.PilotCertificates)
+            builder.HasMany(sc => sc.PilotCertificates)
                 .WithOne(s => s.Certificate)
                 .HasForeignKey(k => k.CertificateId)
                 .IsRequired(true)
                 .OnDelete(DeleteBehavior.Restrict);
-            entity.HasMany(sc => sc.Traineeships)
+            builder.HasMany(sc => sc.Traineeships)
                 .WithOne(s => s.Certificate)
                 .HasForeignKey(k => k.CertificateId)
                 .IsRequired(true)

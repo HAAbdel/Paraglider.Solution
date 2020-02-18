@@ -11,7 +11,20 @@ namespace Paraglider.DAL.ContextConfiguration.ModelsConfiguration
     {
         public void Configure(EntityTypeBuilder<PilotCertificate> builder)
         {
-            builder.HasKey(sc => new { sc.CertificateId, sc.PilotId });
+            builder.HasKey(sc => new { sc.PilotId, sc.CertificateId });
+
+            builder.Property(p => p.DateOfSucc).HasColumnType("date");
+
+            builder.HasOne(p => p.Certificate)
+                .WithMany(c => c.PilotCertificates)
+                .HasForeignKey(k => k.CertificateId)
+                .IsRequired(true)
+                .OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(p => p.Pilot)
+                .WithMany(c => c.PilotCertificates)
+                .HasForeignKey(k => k.PilotId)
+                .IsRequired(true)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

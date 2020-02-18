@@ -9,20 +9,20 @@ namespace Paraglider.DAL.ContextConfiguration.ModelsConfiguration
 {
     internal class ParagliderModelConfig : IEntityTypeConfiguration<ParagliderModel>
     {
-        public void Configure(EntityTypeBuilder<ParagliderModel> entity)
+        public void Configure(EntityTypeBuilder<ParagliderModel> builder)
         {
-            entity.HasQueryFilter(p => p.IsActive);
+            builder.HasQueryFilter(p => p.IsActive);
 
-            entity.Property(p => p.DateOfHomologation)
+            builder.Property(p => p.DateOfHomologation)
                 .HasColumnType("date");
-            entity.Property(p => p.Size)
+            builder.Property(p => p.Size)
                 .HasColumnType("decimal(5,2)");
-            entity.Property(p => p.MinimalWeight)
+            builder.Property(p => p.MinimalWeight)
                 .HasColumnType("decimal(5,2)");
-            entity.Property(p => p.MaximumWeight)
+            builder.Property(p => p.MaximumWeight)
                 .HasColumnType("decimal(5,2)");
 
-            entity.HasMany(p => p.Paragliders)
+            builder.HasMany(p => p.Paragliders)
                 .WithOne(p => p.ParagliderModel)
                 .HasForeignKey(p => p.ParagliderModelId)
                 .IsRequired(true)

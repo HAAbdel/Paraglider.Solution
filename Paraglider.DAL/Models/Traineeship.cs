@@ -10,7 +10,6 @@ namespace Paraglider.DAL.Models
     {
         public int TraineeshipId { get; set; }
         public bool IsActive { get; set; }
-        [Column(TypeName = "decimal(5,2)")]
         public decimal Prize { get; set; }
         public DateTime DateOfEnd { get; set; }
         public DateTime DateOfStart { get; set; }

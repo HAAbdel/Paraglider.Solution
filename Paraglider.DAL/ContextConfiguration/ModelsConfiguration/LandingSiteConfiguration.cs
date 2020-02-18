@@ -9,14 +9,14 @@ namespace Paraglider.DAL.ContextConfiguration.ModelsConfiguration
 {
     class LandingSiteConfiguration : IEntityTypeConfiguration<LandingSite>
     {
-        public void Configure(EntityTypeBuilder<LandingSite> entity)
+        public void Configure(EntityTypeBuilder<LandingSite> builder)
         {
-            entity.HasOne(p => p.Site)
+            builder.HasOne(p => p.Site)
                 .WithMany(c => c.LandingSites)
                 .HasForeignKey(k => k.SiteId)
                 .IsRequired(true)
                 .OnDelete(DeleteBehavior.Restrict);
-            entity.HasOne(p => p.Level)
+            builder.HasOne(p => p.Level)
                 .WithMany(c => c.LandingSites)
                 .HasForeignKey(k => k.LevelId)
                 .IsRequired(true)
