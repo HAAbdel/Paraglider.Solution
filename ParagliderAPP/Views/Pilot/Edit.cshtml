@@ -3,44 +3,26 @@
     ViewData["Title"] = "edit";
 }
 
-@model IEnumerable<Paraglider.DAL.Models.Pilot>
+@model Paraglider.DAL.Models.Pilot
 <h1>edit</h1>
+ 
+<form method="post">
 
-<form>
+    <input type="hidden" asp-for="PilotId" />
+    <div class="form-group">
+        <label asp-for="LastName" ></label>
+        <input asp-for="LastName" class="form-control" />
+    </div>
+   
 
-
-    <table>
-        @foreach (var pilot in Model)
-        {
-            <tr>
-                <th>First Name :<input type="text" name="FirstName" value="@pilot.FirstName" /></th>
-                <th>Last Name :<input type="text" name="LastName" value="@pilot.LastName" /></th>
-                <th>Email :<input type="email" name="Email" value="@pilot.Email" /> </th>
-                <th>
-                    Role :
-                    <select>
-                        <option value="President">President</option>
-                        <option value="copresident">copresident</option>
-                        <option value="treasureman">treasureman</option>
-                        <option value="secretary">secretary</option>
-                    </select>
-                </th>
-                <th>Phone Number :<input type="tel" name="PhoneNumber" value="@pilot.PhoneNumber" /></th>
-                <th>Weight :<input type="text" name="Weight" value="@pilot.Weight" /></th>
-                <th>Memberships :<input type="number" name="PilotMemberships" value="@pilot.PilotMemberships" /></th>
-            </tr>
-        }
-    </table>
-    <button type="submit">Validate</button>
-
-
+      
 
 </form>
 
 
 
 
-</div>
+
 
 
 

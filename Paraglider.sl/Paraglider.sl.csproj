@@ -8,4 +8,8 @@
     <Folder Include="Models\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Paraglider.DAL\Paraglider.DAL.csproj" />
+  </ItemGroup>
+
 </Project>
