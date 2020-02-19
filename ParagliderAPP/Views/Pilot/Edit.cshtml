@@ -3,12 +3,12 @@
     ViewData["Title"] = "edit";
 }
 
-@model Paraglider.DAL.Models.Pilot
+@model Paraglider.sl.DTOs.PilotDetailDto
 <h1>edit</h1>
  
 <form method="post">
 
-    <input type="hidden" asp-for="PilotId" />
+    <input type="hidden" asp-for="Id" />
     <div class="form-group">
         <label asp-for="LastName" ></label>
         <input asp-for="LastName" class="form-control" />

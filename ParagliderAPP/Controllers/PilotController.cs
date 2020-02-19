@@ -13,7 +13,6 @@ namespace ParagliderAPP.Controllers
     public class PilotController : Controller
     {
         private readonly ParagliderContext _context;
-
         public PilotController(ParagliderContext context)
         {
             _context = context;
@@ -31,12 +30,14 @@ namespace ParagliderAPP.Controllers
             var model = Sp.GetPilotByName(name);
             return View(model);
         }
-       
-        //[HttpGet]
-        //public ActionResult edit(int id)
-        //{
-        //    return View("Edit",model);
-        //}
+
+        [HttpGet]
+        public ActionResult edit(int id)
+        {
+            DetailedPilot Dp = new DetailedPilot(_context);
+            var model = Dp.GetSpecific(id);
+            return View("Edit", model);
+        }
 
 
     }
