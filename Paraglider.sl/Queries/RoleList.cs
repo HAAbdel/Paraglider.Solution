@@ -16,7 +16,7 @@ namespace Paraglider.sl.Queries
         {
             _config = config;
         }
-        public IQueryable<RoleDto> GetAllRoles()
+        public IEnumerable<RoleDto> GetAllRoles()
         {
             var Roles = _config.Roles.Select(p => new RoleDto { Id = p.RoleId, RoleName = p.RoleName });
             foreach(var role in Roles)
