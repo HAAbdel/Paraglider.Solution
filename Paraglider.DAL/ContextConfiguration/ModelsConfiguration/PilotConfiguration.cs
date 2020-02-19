@@ -11,6 +11,7 @@ namespace Paraglider.DAL.ContextConfiguration.ModelsConfiguration
     {
         public void Configure(EntityTypeBuilder<Pilot> builder)
         {
+            builder.HasQueryFilter(p => p.IsActive);
 
             builder.Property(p => p.Weight)
                 .HasColumnType("decimal(5,2)")

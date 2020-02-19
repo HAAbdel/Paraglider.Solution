@@ -148,11 +148,11 @@ namespace Paraglider.DAL
         public void SeedingCertificate(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Certificate>().HasData(
-                new Certificate() { CertificateId = 1, CerttificatName = "No grade", IsValide =true},
-                new Certificate() { CertificateId = 2, CerttificatName = "Begginer", IsValide = true },
-                new Certificate() { CertificateId = 3, CerttificatName = "Medior", IsValide = true },
-                new Certificate() { CertificateId = 4, CerttificatName = "Advanced", IsValide = true },
-                new Certificate() { CertificateId = 5, CerttificatName = "Master", IsValide = true }
+                new Certificate() { CertificateId = 1, CerttificatName = "No grade", IsActive =true},
+                new Certificate() { CertificateId = 2, CerttificatName = "Begginer", IsActive = true },
+                new Certificate() { CertificateId = 3, CerttificatName = "Medior", IsActive = true },
+                new Certificate() { CertificateId = 4, CerttificatName = "Advanced", IsActive = true },
+                new Certificate() { CertificateId = 5, CerttificatName = "Master", IsActive = true }
                 );
     }
         public void SeedingTraineeship(ModelBuilder modelBuilder)
@@ -196,9 +196,9 @@ namespace Paraglider.DAL
         public void SeedingFlights(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Flight>().HasData(
-                new Flight() { FlightId = 1,IsValide = true,ParagliderId = 1,PilotId = 1,FlightDate = new DateTime(2018, 9, 2),FlightDuration = 1,SiteId = 1},
-                new Flight() { FlightId = 2,IsValide = true,ParagliderId = 4,PilotId = 2,FlightDate = new DateTime(2018, 9, 10),FlightDuration = 2,SiteId = 2},
-                new Flight() { FlightId = 3, IsValide = true, ParagliderId = 5,PilotId = 3,FlightDate = new DateTime(2019, 10, 1),FlightDuration = 2,SiteId = 3}
+                new Flight() { FlightId = 1,IsActive = true,ParagliderId = 1,PilotId = 1,FlightDate = new DateTime(2018, 9, 2),FlightDuration = 1,SiteId = 1},
+                new Flight() { FlightId = 2,IsActive = true,ParagliderId = 4,PilotId = 2,FlightDate = new DateTime(2018, 9, 10),FlightDuration = 2,SiteId = 2},
+                new Flight() { FlightId = 3, IsActive = true, ParagliderId = 5,PilotId = 3,FlightDate = new DateTime(2019, 10, 1),FlightDuration = 2,SiteId = 3}
                 );
         }
     }

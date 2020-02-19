@@ -36,6 +36,7 @@ namespace ParagliderAPP.Controllers
         {
             DetailedPilot Dp = new DetailedPilot(_context);
             var model = Dp.GetSpecific(id);
+            Dp.SetNewPilot(new Paraglider.sl.DTOs.PilotDetailDto());
             return View("Edit", model);
         }
         [HttpPost]

@@ -11,6 +11,8 @@ namespace Paraglider.DAL.ContextConfiguration.ModelsConfiguration
     {
         public void Configure(EntityTypeBuilder<Certificate> builder)
         {
+            builder.HasQueryFilter(p => p.IsActive);
+
             builder.HasMany(sc => sc.PilotCertificates)
                 .WithOne(s => s.Certificate)
                 .HasForeignKey(k => k.CertificateId)

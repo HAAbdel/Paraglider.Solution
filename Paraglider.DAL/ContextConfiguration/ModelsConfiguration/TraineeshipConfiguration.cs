@@ -11,6 +11,8 @@ namespace Paraglider.DAL.ContextConfiguration.ModelsConfiguration
     {
         public void Configure(EntityTypeBuilder<Traineeship> builder)
         {
+            builder.HasQueryFilter(p => p.IsActive);
+
             builder.Property(De => De.DateOfEnd)
                 .HasColumnType("date");
             builder.Property(Ds => Ds.DateOfStart)

@@ -11,6 +11,8 @@ namespace Paraglider.DAL.ContextConfiguration.ModelsConfiguration
     {
         public void Configure(EntityTypeBuilder<Membership> builder)
         {
+            builder.HasQueryFilter(p => p.IsActive);
+
             builder.Property(m => m.MembershipAmount)
                 .HasColumnType("decimal(5,2)");
             builder.HasMany(pms => pms.PilotMemberships)

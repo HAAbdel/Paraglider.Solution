@@ -11,6 +11,8 @@ namespace Paraglider.DAL.ContextConfiguration.ModelsConfiguration
     {
         public void Configure(EntityTypeBuilder<Site> builder)
         {
+            builder.HasQueryFilter(p => p.IsActive);
+
             builder.HasMany(ls => ls.LaunchingSites)
                 .WithOne(s => s.Site)
                 .HasForeignKey(k => k.SiteId)

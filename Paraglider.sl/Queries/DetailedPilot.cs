@@ -1,4 +1,5 @@
 ﻿using Paraglider.DAL;
+using Paraglider.DAL.Models;
 using Paraglider.sl.DTOs;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,23 @@ namespace Paraglider.sl.Queries
                 .Where(p => p.Id == SearchId).First();
             
             return Pilot;
+        }
+        public bool SetNewPilot(PilotDetailDto NewDtoPilot)
+        {
+            _config.Pilots.Add(new Pilot()
+            {
+                FirstName = NewDtoPilot.FirstName,
+                LastName = NewDtoPilot.LastName,
+                Email = NewDtoPilot.Email,
+                PhoneNumber = NewDtoPilot.PhoneNumber,
+                IsActive = true,
+                Weight = NewDtoPilot.Weight,
+                RoleId = null
+
+            });
+            _config.SaveChanges();
+            
+            return true;
         }
     }
 }
