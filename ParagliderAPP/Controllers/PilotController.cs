@@ -38,6 +38,11 @@ namespace ParagliderAPP.Controllers
             var model = Dp.GetSpecific(id);
             return View("Edit", model);
         }
+        [HttpPost]
+        public ActionResult Update(int id)
+        {
+            return View();
+        }
 
 
     }

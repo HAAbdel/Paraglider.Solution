@@ -30,7 +30,6 @@ namespace ParagliderAPP
         {
             services.AddDbContext<ParagliderContext>(item => item.UseSqlServer(this.config.GetConnectionString("myconn")));
             services.AddControllersWithViews();
-            services.AddSingleton<IPilotRepository, MockpilotRepository>();
      
         }
 

@@ -17,7 +17,8 @@ namespace Paraglider.sl.Queries
         }
         public PilotDetailDto GetSpecific(int SearchId)
         {
-            var Pilot = _config.Pilots.Select(p => new PilotDetailDto { Id = p.PilotId, FirstName = p.FirstName, LastName = p.LastName, PhoneNumber = p.PhoneNumber, Email = p.Email, Weight = p.Weight }).Where(p => p.Id == SearchId).First();
+            var Pilot = _config.Pilots.Select(p => new PilotDetailDto { Id = p.PilotId, FirstName = p.FirstName, LastName = p.LastName, PhoneNumber = p.PhoneNumber, Email = p.Email, Weight = p.Weight, Role = p.Role }).Where(p => p.Id == SearchId).First();
+            
             return Pilot;
         }
     }
