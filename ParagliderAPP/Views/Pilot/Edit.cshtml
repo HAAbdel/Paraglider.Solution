@@ -1,19 +1,25 @@
 ﻿
 @{
+    
     ViewData["Title"] = "edit";
 }
 
-@model Paraglider.sl.DTOs.PilotDetailDto
+@model PilotAndRoleMergeViewModel
 <h1>edit</h1>
  
 <form method="post">
 
-    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="PilotDetail.Id" />
     <div class="form-group">
-        <label asp-for="LastName"></label>
-        <input asp-for="LastName" class="form-control" />
-        <label asp-for="Role"></label>
-        <input asp-for="Role.RoleName" class="form-control" />
+        <label asp-for="PilotDetail.LastName"></label>
+        <input asp-for="PilotDetail.LastName" class="form-control" />
+        <label asp-for="PilotDetail.Role"></label>
+        <select class="form-control" asp-for="Roles" asp-items=")">
+         
+                <option value=""></option>
+            
+        </select>
+
 
     </div>
    

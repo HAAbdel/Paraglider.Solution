@@ -34,9 +34,18 @@ namespace ParagliderAPP.Controllers
         [HttpGet]
         public ActionResult edit(int id)
         {
+            // FAIRE LE BINDING AU MODEL 
+            RoleList toto = new RoleList(_context);
             DetailedPilot Dp = new DetailedPilot(_context);
-            var model = Dp.GetSpecific(id);
-            return View("Edit", model);
+            //var model = Dp.GetSpecific(id);
+            PilotAndRoleMergeViewModel myModel = new PilotAndRoleMergeViewModel
+            {
+                PilotDetail = Dp.GetSpecific(id),
+                Roles = toto.GetAllRoles()
+            };
+
+            // ENVOYER LE VIEWMODEL A LA VUE 
+            return View("Edit", myModel);
         }
         [HttpPost]
         public ActionResult Update(int id)
@@ -47,10 +56,14 @@ namespace ParagliderAPP.Controllers
         [HttpGet]
         public ActionResult Details(int id)
         {
+            
             DetailedPilot Dp = new DetailedPilot(_context);
             var model = Dp.GetSpecific(id);
             return View("Details", model);
         }
+
+
+       
 
 
     }
