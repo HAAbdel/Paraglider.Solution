@@ -1,5 +1,5 @@
 ﻿
-@model IEnumerable<Paraglider.DAL.Models.Pilot>
+@model IQueryable<Paraglider.sl.DTOs.PilotDto>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -27,12 +27,6 @@
                 <th>id </th>
                 <th>first</th>
                 <th>last</th>
-                <th>Email </th>
-                <th>PilotRole</th>
-                <th>PhoneNumber</th>
-                <th>Wheight</th>
-                <th>Memberships</th>
-
             </tr>
         </thead>
         <tbody>
@@ -40,19 +34,11 @@
             {
 
             <tr>
-                <th>@pilot.PilotId </th>
+                <th>@pilot.Id </th>
                 <th>@pilot.FirstName</th>
                 <th>@pilot.LastName</th>
-                <th>@pilot.Email </th>
-                <th>@pilot.Role</th>
-                <th>@pilot.PhoneNumber</th>
-                <th>@pilot.Weight</th>
-                <th>@pilot.PilotMemberships</th>
-                <th>@Html.ActionLink("edit", "edit", new { id = pilot.PilotId })</th>
-                <th>@Html.ActionLink("delete", "edit", new { id = pilot.PilotId })</th>
 
             </tr>
-
             }
         </tbody>
     </table>

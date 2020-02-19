@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Paraglider.sl.DTOs
 {
-    class PilotDto
+    public class PilotDto
     {
         public int Id { get; set; }
         public string FirstName { get; set; }

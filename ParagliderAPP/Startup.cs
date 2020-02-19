@@ -31,6 +31,7 @@ namespace ParagliderAPP
             services.AddDbContext<ParagliderContext>(item => item.UseSqlServer(this.config.GetConnectionString("myconn")));
             services.AddControllersWithViews();
             services.AddSingleton<IPilotRepository, MockpilotRepository>();
+     
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

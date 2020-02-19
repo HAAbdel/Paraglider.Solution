@@ -4,39 +4,39 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ParagliderAPP.Models;
-
-
+using Paraglider.sl;
+using Paraglider.sl.Queries;
+using Paraglider.DAL;
 
 namespace ParagliderAPP.Controllers
 {
     public class PilotController : Controller
     {
-        private IPilotRepository _pilotRepository;
+        private readonly ParagliderContext _context;
 
-        public PilotController(IPilotRepository pilotRepository)
+        public PilotController(ParagliderContext context)
         {
-            _pilotRepository = pilotRepository;
+            _context = context;
         }
         public ViewResult Index()
         {
-
-            var model = _pilotRepository.GetAllPilot();
+            SimplePilot Sp = new SimplePilot(_context);
+            var model = Sp.GetAllPilots();
             return View(model);
-
         }
         [HttpPost]
         public ViewResult Index(string name)
         {
-            var model = _pilotRepository.GetPilotByName(name);
+            SimplePilot Sp = new SimplePilot(_context);
+            var model = Sp.GetPilotByName(name);
             return View(model);
         }
        
-        [HttpGet]
-        public ActionResult edit(int id)
-        {
-            var model = _pilotRepository.GetPilotByID(id);
-            return View("Edit",model);
-        }
+        //[HttpGet]
+        //public ActionResult edit(int id)
+        //{
+        //    return View("Edit",model);
+        //}
 
 
     }
