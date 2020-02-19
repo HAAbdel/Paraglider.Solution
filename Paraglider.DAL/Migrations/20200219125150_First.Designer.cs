@@ -10,7 +10,7 @@ using Paraglider.DAL;
 namespace Paraglider.DAL.Migrations
 {
     [DbContext(typeof(ParagliderContext))]
-    [Migration("20200219082618_First")]
+    [Migration("20200219125150_First")]
     partial class First
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,7 +32,7 @@ namespace Paraglider.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsValide")
+                    b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
                     b.HasKey("CertificateId");
@@ -44,31 +44,31 @@ namespace Paraglider.DAL.Migrations
                         {
                             CertificateId = 1,
                             CerttificatName = "No grade",
-                            IsValide = true
+                            IsActive = true
                         },
                         new
                         {
                             CertificateId = 2,
                             CerttificatName = "Begginer",
-                            IsValide = true
+                            IsActive = true
                         },
                         new
                         {
                             CertificateId = 3,
                             CerttificatName = "Medior",
-                            IsValide = true
+                            IsActive = true
                         },
                         new
                         {
                             CertificateId = 4,
                             CerttificatName = "Advanced",
-                            IsValide = true
+                            IsActive = true
                         },
                         new
                         {
                             CertificateId = 5,
                             CerttificatName = "Master",
-                            IsValide = true
+                            IsActive = true
                         });
                 });
 
@@ -85,7 +85,7 @@ namespace Paraglider.DAL.Migrations
                     b.Property<decimal>("FlightDuration")
                         .HasColumnType("decimal(5,2)");
 
-                    b.Property<bool>("IsValide")
+                    b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
                     b.Property<int>("ParagliderId")
@@ -113,7 +113,7 @@ namespace Paraglider.DAL.Migrations
                             FlightId = 1,
                             FlightDate = new DateTime(2018, 9, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FlightDuration = 1m,
-                            IsValide = true,
+                            IsActive = true,
                             ParagliderId = 1,
                             PilotId = 1,
                             SiteId = 1
@@ -123,7 +123,7 @@ namespace Paraglider.DAL.Migrations
                             FlightId = 2,
                             FlightDate = new DateTime(2018, 9, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FlightDuration = 2m,
-                            IsValide = true,
+                            IsActive = true,
                             ParagliderId = 4,
                             PilotId = 2,
                             SiteId = 2
@@ -133,7 +133,7 @@ namespace Paraglider.DAL.Migrations
                             FlightId = 3,
                             FlightDate = new DateTime(2019, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FlightDuration = 2m,
-                            IsValide = true,
+                            IsActive = true,
                             ParagliderId = 5,
                             PilotId = 3,
                             SiteId = 3

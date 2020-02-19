@@ -13,7 +13,7 @@ namespace Paraglider.DAL.Migrations
                 {
                     CertificateId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    IsValide = table.Column<bool>(nullable: false),
+                    IsActive = table.Column<bool>(nullable: false),
                     CerttificatName = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
@@ -246,7 +246,7 @@ namespace Paraglider.DAL.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FlightDate = table.Column<DateTime>(type: "date", nullable: false),
                     FlightDuration = table.Column<decimal>(type: "decimal(5,2)", nullable: false),
-                    IsValide = table.Column<bool>(nullable: false),
+                    IsActive = table.Column<bool>(nullable: false),
                     ParagliderId = table.Column<int>(nullable: false),
                     PilotId = table.Column<int>(nullable: false),
                     SiteId = table.Column<int>(nullable: false)
@@ -352,7 +352,7 @@ namespace Paraglider.DAL.Migrations
 
             migrationBuilder.InsertData(
                 table: "Certificates",
-                columns: new[] { "CertificateId", "CerttificatName", "IsValide" },
+                columns: new[] { "CertificateId", "CerttificatName", "IsActive" },
                 values: new object[,]
                 {
                     { 1, "No grade", true },
@@ -494,7 +494,7 @@ namespace Paraglider.DAL.Migrations
 
             migrationBuilder.InsertData(
                 table: "Flights",
-                columns: new[] { "FlightId", "FlightDate", "FlightDuration", "IsValide", "ParagliderId", "PilotId", "SiteId" },
+                columns: new[] { "FlightId", "FlightDate", "FlightDuration", "IsActive", "ParagliderId", "PilotId", "SiteId" },
                 values: new object[,]
                 {
                     { 2, new DateTime(2018, 9, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), 2m, true, 4, 2, 2 },

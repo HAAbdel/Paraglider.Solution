@@ -11,7 +11,7 @@ namespace Paraglider.DAL.Models
         public int CertificateId { get; set; }
         //Soft delete
         [Required]
-        public bool IsValide { get; set; }
+        public bool IsActive { get; set; }
         //Properties
         [Required]
         public string CerttificatName { get; set; }

@@ -17,7 +17,7 @@ namespace Paraglider.DAL.Models
 
         //Soft delete
         [Required]
-        public bool IsValide { get; set; }
+        public bool IsActive { get; set; }
 
         //Navigation properties
         public int ParagliderId { get; set; }
