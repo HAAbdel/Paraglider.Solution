@@ -20,7 +20,10 @@ namespace Paraglider.sl.Queries
         {
             var Pilot = _config.Pilots.Select(p => new PilotDetailDto { Id = p.PilotId, FirstName = p.FirstName, LastName = p.LastName, PhoneNumber = p.PhoneNumber, Email = p.Email, Weight = p.Weight, Role = p.Role })
                 .Where(p => p.Id == SearchId).First();
-            
+            if(Pilot.Role ==null)
+            {
+                Pilot.Role = new Role() { RoleId = -1, RoleName = "None" };
+            }
             return Pilot;
         }
         public bool SetNewPilot(PilotDetailDto NewDtoPilot)
@@ -34,7 +37,6 @@ namespace Paraglider.sl.Queries
                 IsActive = true,
                 Weight = NewDtoPilot.Weight,
                 RoleId = null
-
             });
             _config.SaveChanges();
             
