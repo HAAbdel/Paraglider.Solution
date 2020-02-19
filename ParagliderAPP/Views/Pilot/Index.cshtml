@@ -37,6 +37,8 @@
                 <th>@pilot.Id </th>
                 <th>@pilot.FirstName</th>
                 <th>@pilot.LastName</th>
+                <th>@Html.ActionLink("Edit", "Edit", new { id = pilot.Id })</th>
+                <th>@Html.ActionLink("Details","Details", new { id = pilot.Id })</th>
             </tr>
             }
         </tbody>

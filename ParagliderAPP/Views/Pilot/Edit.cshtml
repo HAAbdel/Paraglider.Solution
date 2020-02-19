@@ -10,8 +10,11 @@
 
     <input type="hidden" asp-for="Id" />
     <div class="form-group">
-        <label asp-for="LastName" ></label>
+        <label asp-for="LastName"></label>
         <input asp-for="LastName" class="form-control" />
+        <label asp-for="Role"></label>
+        <input asp-for="Role.RoleName" class="form-control" />
+
     </div>
    
 

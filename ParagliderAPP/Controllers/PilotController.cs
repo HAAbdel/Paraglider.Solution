@@ -44,6 +44,14 @@ namespace ParagliderAPP.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult Details(int id)
+        {
+            DetailedPilot Dp = new DetailedPilot(_context);
+            var model = Dp.GetSpecific(id);
+            return View("Details", model);
+        }
+
 
     }
       

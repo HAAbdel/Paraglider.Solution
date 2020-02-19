@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewData["Title"] = "Details";
+
+        
+}
+@model Paraglider.sl.DTOs.PilotDetailDto
+
+<h1>Details</h1>
+<div>
+    <table>
+     
+            <tr>First Name : @Model.FirstName</tr>
+            <tr>Last Name : @Model.LastName</tr>
+            <tr>Phone Number : @Model.PhoneNumber</tr>
+            <tr>Email : @Model.Email</tr>
+            <tr>Weight : @Model.Weight</tr>
+            <tr>Role : @Model.Role.RoleName</tr>
+
+     
+    </table>
+
+
+
+</div>
