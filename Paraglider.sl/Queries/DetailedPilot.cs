@@ -18,9 +18,18 @@ namespace Paraglider.sl.Queries
         }
         public PilotDetailDto GetSpecific(int SearchId)
         {
-            var Pilot = _config.Pilots.Select(p => new PilotDetailDto { Id = p.PilotId, FirstName = p.FirstName, LastName = p.LastName, PhoneNumber = p.PhoneNumber, Email = p.Email, Weight = p.Weight, Role = p.Role })
-                .Where(p => p.Id == SearchId).First();
-            if(Pilot.Role ==null)
+            var Pilot = _config.Pilots.Select(p => new PilotDetailDto 
+                { 
+                Id = p.PilotId,
+                FirstName = p.FirstName,
+                LastName = p.LastName,
+                PhoneNumber = p.PhoneNumber,
+                Email = p.Email,
+                Weight = p.Weight,
+                Role = p.Role 
+                }).Where(p => p.Id == SearchId).First();
+
+            if(Pilot.Role == null)
             {
                 Pilot.Role = new Role() { RoleId = -1, RoleName = "None" };
             }
@@ -52,9 +61,6 @@ namespace Paraglider.sl.Queries
             pilotForUpdate.PhoneNumber = pilotDetailDto.PilotDetail.PhoneNumber;
 
             _config.SaveChanges();
-
-            pilotDetailDto.Roles = new RoleList(_config).GetAllAvalableRoles();
-            pilotDetailDto.PilotDetail = new DetailedPilot(_config).GetSpecific(pilotDetailDto.PilotDetail.Id);
 
             return pilotDetailDto;
         }

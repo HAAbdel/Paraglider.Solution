@@ -24,7 +24,12 @@ namespace Paraglider.sl.Queries
         }
         public IQueryable<PilotDto> GetPilotByName(string SearchedName)
         {
-            var Pilots = _config.Pilots.Select(p => new PilotDto { FirstName = p.FirstName, LastName = p.LastName, Id = p.PilotId }).Where(p => p.LastName.Contains(SearchedName)||p.FirstName.Contains(SearchedName));
+            var Pilots = _config.Pilots.Select(p => new PilotDto 
+                {
+                    FirstName = p.FirstName, 
+                    LastName = p.LastName, 
+                    Id = p.PilotId 
+                }).Where(p => p.LastName.Contains(SearchedName)||p.FirstName.Contains(SearchedName));
 
             return Pilots;
         }

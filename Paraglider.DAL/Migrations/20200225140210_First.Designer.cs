@@ -10,7 +10,7 @@ using Paraglider.DAL;
 namespace Paraglider.DAL.Migrations
 {
     [DbContext(typeof(ParagliderContext))]
-    [Migration("20200219125150_First")]
+    [Migration("20200225140210_First")]
     partial class First
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -28,6 +28,10 @@
             {
                 <option value="@role.Id">@role.RoleName</option>
             }
+            @if (Model.PilotDetail.Role.RoleId != -1)
+            {
+                <option value="@null">Default role</option>
+            }
         </select>
    </div>
     <button type="submit" class="btn btn-primary">save</button>

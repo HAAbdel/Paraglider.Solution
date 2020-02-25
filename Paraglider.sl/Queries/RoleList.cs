@@ -28,7 +28,14 @@ namespace Paraglider.sl.Queries
         }
         public IEnumerable<RoleDto> GetAllAvalableRoles()
         {
-            var Roles = _config.Roles.Where(r => r.IsActive == false).Select(p => new RoleDto { Id = p.RoleId, RoleName = p.RoleName }).IgnoreQueryFilters();
+            var Roles = _config.Roles.Where(r => r.IsActive == false)
+                .Select(p => new RoleDto
+                    { 
+                        Id = p.RoleId, 
+                        RoleName = p.RoleName 
+                    })
+                .IgnoreQueryFilters();
+
             foreach (var role in Roles)
             {
                 Console.WriteLine(role.RoleName);
@@ -37,7 +44,12 @@ namespace Paraglider.sl.Queries
         }
         public RoleDto GetSpecificRole(int SearchedRoleId)
         {
-            var Role = _config.Roles.Select(p => new RoleDto { Id = p.RoleId, RoleName = p.RoleName }).Where(r => r.Id == SearchedRoleId).First();
+            var Role = _config.Roles.Select(p => new RoleDto 
+                { 
+                Id = p.RoleId, 
+                RoleName = p.RoleName 
+                }).Where(r => r.Id == SearchedRoleId)
+                .First();
 
             return Role;
         }
