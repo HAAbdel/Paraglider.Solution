@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ using Paraglider.sl;
 using Paraglider.sl.Queries;
 using Paraglider.DAL;
 using Paraglider.sl.DTOs;
+using Paraglider.DAL.Models;
 
 namespace ParagliderAPP.Controllers
 {
@@ -51,7 +53,12 @@ namespace ParagliderAPP.Controllers
         public ActionResult Edit(PilotAndRoleMergeViewModel pilotForUpdate )
         {
             DetailedPilot Sp = new DetailedPilot(_context);
-            var model = Sp.UpdatePilot(pilotForUpdate);
+
+            Role tempRole = _context.Roles.Where(r => r.RoleId == pilotForUpdate.PilotDetail.Role.RoleId).IgnoreQueryFilters().First();
+            tempRole.IsActive = true;
+            _context.Roles.Update(tempRole);
+            _context.SaveChanges();
+            PilotAndRoleMergeViewModel model = Sp.UpdatePilot(pilotForUpdate);
             return View(model);
         }
 

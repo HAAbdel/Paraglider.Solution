@@ -13,6 +13,10 @@ namespace Paraglider.sl.DTOs
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
         public  decimal Weight { get; set; }
-        public Role Role { get; set; }
+        public Role Role 
+        {
+            get;
+            set;
+        }
     }
 }

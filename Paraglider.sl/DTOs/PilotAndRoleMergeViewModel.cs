@@ -10,7 +10,6 @@ namespace Paraglider.sl.DTOs
     {
         public PilotDetailDto PilotDetail { get; set; }
         public IEnumerable<RoleDto> Roles { get; set; }
-        public int RoleId { get; set; }
 
         internal Pilot ToPilot()
         {

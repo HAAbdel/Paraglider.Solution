@@ -46,12 +46,15 @@ namespace Paraglider.sl.Queries
         {
             Pilot pilotForUpdate = _config.Pilots.Where(p => p.PilotId == pilotDetailDto.PilotDetail.Id).First();
             pilotForUpdate.FirstName = pilotDetailDto.PilotDetail.FirstName;
-           //pilotForUpdate.LastName = pilotDetailDto.PilotDetail.LastName;
+            pilotForUpdate.LastName = pilotDetailDto.PilotDetail.LastName;
             pilotForUpdate.Email = pilotDetailDto.PilotDetail.Email;
             pilotForUpdate.Weight = pilotDetailDto.PilotDetail.Weight;
             pilotForUpdate.PhoneNumber = pilotDetailDto.PilotDetail.PhoneNumber;
 
             _config.SaveChanges();
+
+            pilotDetailDto.Roles = new RoleList(_config).GetAllAvalableRoles();
+            pilotDetailDto.PilotDetail = new DetailedPilot(_config).GetSpecific(pilotDetailDto.PilotDetail.Id);
 
             return pilotDetailDto;
         }

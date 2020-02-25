@@ -22,7 +22,8 @@
         <label asp-for="PilotDetail.Weight"></label>
         <input asp-for="PilotDetail.Weight" class="form-control" />
         <label asp-for="PilotDetail.Role">Role Actuel @Model.PilotDetail.Role.RoleName</label>
-        <select class="form-control">
+        <select asp-for="PilotDetail.Role.RoleId" class="form-control">
+            <option value="@Model.PilotDetail.Role.RoleId">@Model.PilotDetail.Role.RoleName</option>
             @foreach (var role in Model.Roles)
             {
                 <option value="@role.Id">@role.RoleName</option>
