@@ -44,6 +44,10 @@ namespace Paraglider.sl.Queries
         }
         public PilotAndRoleMergeViewModel UpdatePilot(PilotAndRoleMergeViewModel pilotDetailDto)
         {
+
+     
+
+
             Pilot pilotForUpdate = _config.Pilots.Where(p => p.PilotId == pilotDetailDto.PilotDetail.Id).First();
             pilotForUpdate.FirstName = pilotDetailDto.PilotDetail.FirstName;
             pilotForUpdate.LastName = pilotDetailDto.PilotDetail.LastName;
