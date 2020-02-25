@@ -1,4 +1,5 @@
 ﻿using Paraglider.DAL;
+using Paraglider.DAL.Models;
 using Paraglider.sl.DTOs;
 using System;
 using System.Collections.Generic;
@@ -27,5 +28,6 @@ namespace Paraglider.sl.Queries
 
             return Pilots;
         }
+
     }
 }

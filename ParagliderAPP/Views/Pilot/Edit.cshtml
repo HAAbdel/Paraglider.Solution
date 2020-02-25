@@ -4,7 +4,7 @@
     ViewData["Title"] = "edit";
 }
 
-@model PilotAndRoleMergeViewModel
+@model Paraglider.sl.DTOs.PilotAndRoleMergeViewModel
 <h1>edit</h1>
  
 <form method="post">
@@ -21,7 +21,7 @@
         <input asp-for="PilotDetail.PhoneNumber" class="form-control" />
         <label asp-for="PilotDetail.Weight"></label>
         <input asp-for="PilotDetail.Weight" class="form-control" />
-        <label asp-for="PilotDetail.Role"></label>
+        <label asp-for="PilotDetail.Role">Role Actuel @Model.PilotDetail.Role.RoleName</label>
         <select class="form-control">
             @foreach (var role in Model.Roles)
             {

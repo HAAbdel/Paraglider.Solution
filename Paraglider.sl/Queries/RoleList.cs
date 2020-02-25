@@ -1,4 +1,5 @@
-﻿using Paraglider.DAL;
+﻿using Microsoft.EntityFrameworkCore;
+using Paraglider.DAL;
 using Paraglider.DAL.Models;
 using Paraglider.sl.DTOs;
 using System;
@@ -20,6 +21,15 @@ namespace Paraglider.sl.Queries
         {
             var Roles = _config.Roles.Select(p => new RoleDto { Id = p.RoleId, RoleName = p.RoleName });
             foreach(var role in Roles)
+            {
+                Console.WriteLine(role.RoleName);
+            }
+            return Roles;
+        }
+        public IEnumerable<RoleDto> GetAllAvalableRoles()
+        {
+            var Roles = _config.Roles.Where(r => r.IsActive == false).Select(p => new RoleDto { Id = p.RoleId, RoleName = p.RoleName }).IgnoreQueryFilters();
+            foreach (var role in Roles)
             {
                 Console.WriteLine(role.RoleName);
             }

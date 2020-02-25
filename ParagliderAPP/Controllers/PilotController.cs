@@ -7,6 +7,7 @@ using ParagliderAPP.Models;
 using Paraglider.sl;
 using Paraglider.sl.Queries;
 using Paraglider.DAL;
+using Paraglider.sl.DTOs;
 
 namespace ParagliderAPP.Controllers
 {
@@ -32,28 +33,26 @@ namespace ParagliderAPP.Controllers
         }
 
         [HttpGet]
-        public ActionResult edit(int id)
+        public ActionResult Edit(int id)
         {
             // FAIRE LE BINDING AU MODEL 
-            RoleList toto = new RoleList(_context);
+            RoleList Rl = new RoleList(_context);
             DetailedPilot Dp = new DetailedPilot(_context);
-            //var model = Dp.GetSpecific(id);
             PilotAndRoleMergeViewModel myModel = new PilotAndRoleMergeViewModel
             {
                 PilotDetail = Dp.GetSpecific(id),
-                Roles = toto.GetAllRoles()
+                Roles = Rl.GetAllAvalableRoles()
             };
 
             // ENVOYER LE VIEWMODEL A LA VUE 
             return View("Edit", myModel);
         }
         [HttpPost]
-        public ActionResult Update( updatedpilot )
+        public ActionResult Edit(PilotAndRoleMergeViewModel pilotForUpdate )
         {
             DetailedPilot Sp = new DetailedPilot(_context);
-            var model = Sp.updatePilot(updatedpilot);
+            var model = Sp.UpdatePilot(pilotForUpdate);
             return View(model);
-            
         }
 
         [HttpGet]
