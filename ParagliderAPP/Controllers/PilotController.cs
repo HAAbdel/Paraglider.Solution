@@ -48,9 +48,12 @@ namespace ParagliderAPP.Controllers
             return View("Edit", myModel);
         }
         [HttpPost]
-        public ActionResult Update(int id)
+        public ActionResult Update( updatedpilot )
         {
-            return View();
+            DetailedPilot Sp = new DetailedPilot(_context);
+            var model = Sp.updatePilot(updatedpilot);
+            return View(model);
+            
         }
 
         [HttpGet]
