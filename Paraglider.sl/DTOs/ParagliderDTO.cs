@@ -9,6 +9,7 @@ namespace Paraglider.sl.DTOs
     {
         public int Id { get; set; }
         public decimal TotalHoursFlight { get; set; }
-        public ParagliderModel ParagliderModel { get; set; }
+        public string ParagliderModelName { get; set; }
+        public int ParagliderModelId { get; set; }
     }
 }

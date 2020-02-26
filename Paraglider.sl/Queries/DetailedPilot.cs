@@ -37,7 +37,7 @@ namespace Paraglider.sl.Queries
             }
             return Pilot;
         }
-        public bool SetNewPilot(PilotDetailDto NewDtoPilot)//A CHANGER
+        public bool CreateNewPilot(PilotDetailDto NewDtoPilot)//A CHANGER
         {
             _config.Pilots.Add(new Pilot()
             {
@@ -50,12 +50,12 @@ namespace Paraglider.sl.Queries
                 RoleId = null
             });
             _config.SaveChanges();
-            
+            RoleModificationManager(NewDtoPilot);
             return true;
         }
         public PilotAndRoleMergeViewModel UpdatePilot(PilotAndRoleMergeViewModel pilotDetailDto)
         {
-            RoleModificationManager(pilotDetailDto);
+            RoleModificationManager(pilotDetailDto.PilotDetail);
 
             //Récupérer le pilot de la base de données pour le modifier !
             Pilot pilotForUpdate = _config.Pilots.Where(p => p.PilotId == pilotDetailDto.PilotDetail.Id).First();
@@ -70,13 +70,13 @@ namespace Paraglider.sl.Queries
             return pilotDetailDto;
         }
 
-        private void RoleModificationManager(PilotAndRoleMergeViewModel pilotDetailDto)
+        private void RoleModificationManager(PilotDetailDto pilotDetailDto)
         {
             //Get the PILOT role before the modification
-            PilotDetailDto pilotBeforeModification = new DetailedPilot(_config).GetSpecific(pilotDetailDto.PilotDetail.Id);//A modifier car trop de requestes à la base de données
+            PilotDetailDto pilotBeforeModification = new DetailedPilot(_config).GetSpecific(pilotDetailDto.Id);//A modifier car trop de requestes à la base de données
             
             //Determinate if the role has been modified
-            if (pilotBeforeModification.Role.RoleId != pilotDetailDto.PilotDetail.Role.RoleId)
+            if (pilotBeforeModification.Role.RoleId != pilotDetailDto.Role.RoleId)
             {
                 //If the PILOT had a role before
                 //Define the previus pilotId to 0,the Pilot to null, the Avtice to false and Updating 
@@ -89,17 +89,17 @@ namespace Paraglider.sl.Queries
                     _config.Roles.Update(PreviusRole);
                 }
                 //If the PILOT is going for the DEFAULT ROLE
-                if (pilotDetailDto.PilotDetail.Role.RoleId == 0)
+                if (pilotDetailDto.Role.RoleId == 0)
                 {
-                    pilotDetailDto.PilotDetail.Role = null;
+                    pilotDetailDto.Role = null;
                 }
                 //If the PILOT is getting the new role and this role is modified on the DB
                 else
                 {
-                    Role NewRole = _config.Roles.Where(r => r.RoleId == pilotDetailDto.PilotDetail.Role.RoleId).IgnoreQueryFilters().First();
+                    Role NewRole = _config.Roles.Where(r => r.RoleId == pilotDetailDto.Role.RoleId).IgnoreQueryFilters().First();
                     NewRole.IsActive = true;
-                    NewRole.PilotId = pilotDetailDto.PilotDetail.Id;
-                    NewRole.Pilot = _config.Pilots.Where(p => p.PilotId == pilotDetailDto.PilotDetail.Id).First();
+                    NewRole.PilotId = pilotDetailDto.Id;
+                    NewRole.Pilot = _config.Pilots.Where(p => p.PilotId == pilotDetailDto.Id).First();
                     _config.Roles.Update(NewRole);
                 }
                 //_config.SaveChanges(); //Ajouter si cette methode est utilisé autre part que dans cette classe
