@@ -18,5 +18,6 @@ namespace Paraglider.sl.DTOs
             get;
             set;
         }
+        public decimal TotalHoursFlight { get; set; }
     }
 }

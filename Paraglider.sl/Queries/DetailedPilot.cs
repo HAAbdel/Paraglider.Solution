@@ -19,16 +19,17 @@ namespace Paraglider.sl.Queries
         }
         public PilotDetailDto GetSpecific(int SearchId)
         {
-            var Pilot = _config.Pilots.Select(p => new PilotDetailDto 
-                { 
+            var Pilot = _config.Pilots.Select(p => new PilotDetailDto
+            {
                 Id = p.PilotId,
                 FirstName = p.FirstName,
                 LastName = p.LastName,
                 PhoneNumber = p.PhoneNumber,
                 Email = p.Email,
                 Weight = p.Weight,
-                Role = p.Role 
-                }).Where(p => p.Id == SearchId).First();
+                Role = p.Role,
+                TotalHoursFlight = _config.Flights.Where(p => p.PilotId == SearchId).Select(fh => fh.FlightDuration).Sum()
+            }).Where(p => p.Id == SearchId).First();
 
             if(Pilot.Role == null)
             {
@@ -36,7 +37,7 @@ namespace Paraglider.sl.Queries
             }
             return Pilot;
         }
-        public bool SetNewPilot(PilotDetailDto NewDtoPilot)
+        public bool SetNewPilot(PilotDetailDto NewDtoPilot)//A CHANGER
         {
             _config.Pilots.Add(new Pilot()
             {

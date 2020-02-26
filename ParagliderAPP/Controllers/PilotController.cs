@@ -53,15 +53,21 @@ namespace ParagliderAPP.Controllers
         public ActionResult Edit(PilotAndRoleMergeViewModel pilotForUpdate )
         {
             DetailedPilot Sp = new DetailedPilot(_context);
-            
+            PilotAndRoleMergeViewModel model = new PilotAndRoleMergeViewModel();
 
-            //--------------------------------------
-            //Role tempRole = _context.Roles.Where(r => r.RoleId == pilotForUpdate.PilotDetail.Role.RoleId).IgnoreQueryFilters().First();
-            //tempRole.IsActive = true;
-            //_context.Roles.Update(tempRole);
-            PilotAndRoleMergeViewModel model = Sp.UpdatePilot(pilotForUpdate);
+            try
+            {
+                model = Sp.UpdatePilot(pilotForUpdate);
+            }
+            catch(DbUpdateException exceptionCatched)
+            {
+                //If the SaveChange() as crashed ! 
+            }
+            //Actualize the Roles
             pilotForUpdate.Roles = new RoleList(_context).GetAllAvalableRoles();
-            pilotForUpdate.PilotDetail = new DetailedPilot(_context).GetSpecific(pilotForUpdate.PilotDetail.Id);
+            //pilotForUpdate.PilotDetail = new DetailedPilot(_context).GetSpecific(pilotForUpdate.PilotDetail.Id);
+
+            //Send the model to the View
             return View(model);
         }
 
@@ -73,11 +79,5 @@ namespace ParagliderAPP.Controllers
             var model = Dp.GetSpecific(id);
             return View("Details", model);
         }
-
-
-       
-
-
     }
-      
 }
