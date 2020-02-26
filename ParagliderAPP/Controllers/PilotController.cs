@@ -53,34 +53,7 @@ namespace ParagliderAPP.Controllers
         public ActionResult Edit(PilotAndRoleMergeViewModel pilotForUpdate )
         {
             DetailedPilot Sp = new DetailedPilot(_context);
-            PilotDetailDto pilotBeforeModification = new DetailedPilot(_context).GetSpecific(pilotForUpdate.PilotDetail.Id);//A modifier car trop de requestes à la base de données
-            //Si le pilot a changé de role
-            if(pilotBeforeModification.Role.RoleId != pilotForUpdate.PilotDetail.Role.RoleId)
-            {
-                //Si le pilot avait un role avant
-                if (pilotBeforeModification.Role.RoleId != -1)
-                {
-                    Role PreviusRole = _context.Roles.Where(r => r.RoleId == pilotBeforeModification.Role.RoleId).IgnoreQueryFilters().First();
-                    PreviusRole.IsActive = false;
-                    PreviusRole.PilotId = 0;
-                    PreviusRole.Pilot = null;
-                    _context.Roles.Update(PreviusRole);
-                }
-                //Si va vers le role par defaut
-                if (pilotForUpdate.PilotDetail.Role.RoleId == 0)
-                {
-                    pilotForUpdate.PilotDetail.Role = null;
-                }
-                else
-                {
-                    Role NewRole = _context.Roles.Where(r => r.RoleId == pilotForUpdate.PilotDetail.Role.RoleId).IgnoreQueryFilters().First();
-                    NewRole.IsActive = true;
-                    NewRole.PilotId = pilotForUpdate.PilotDetail.Id;
-                    NewRole.Pilot = _context.Pilots.Where(p => p.PilotId == pilotForUpdate.PilotDetail.Id).First();
-                    _context.Roles.Update(NewRole);
-                }
-                _context.SaveChanges();
-            }
+            
 
             //--------------------------------------
             //Role tempRole = _context.Roles.Where(r => r.RoleId == pilotForUpdate.PilotDetail.Role.RoleId).IgnoreQueryFilters().First();
