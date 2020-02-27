@@ -37,7 +37,6 @@ namespace ParagliderAPP.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            // FAIRE LE BINDING AU MODEL 
             RoleList Rl = new RoleList(_context);
             DetailedPilot Dp = new DetailedPilot(_context);
             PilotAndRoleMergeViewModel myModel = new PilotAndRoleMergeViewModel
@@ -65,7 +64,7 @@ namespace ParagliderAPP.Controllers
             }
             //Actualize the Roles
             pilotForUpdate.Roles = new RoleList(_context).GetAllAvalableRoles();
-            //pilotForUpdate.PilotDetail = new DetailedPilot(_context).GetSpecific(pilotForUpdate.PilotDetail.Id);
+            pilotForUpdate.PilotDetail = new DetailedPilot(_context).GetSpecific(pilotForUpdate.PilotDetail.Id);
 
             //Send the model to the View
             return View(model);
@@ -74,7 +73,6 @@ namespace ParagliderAPP.Controllers
         [HttpGet]
         public ActionResult Details(int id)
         {
-            
             DetailedPilot Dp = new DetailedPilot(_context);
             var model = Dp.GetSpecific(id);
             return View("Details", model);
