@@ -20,5 +20,12 @@ namespace ParagliderAPP.Controllers
             var model = SPM.GetAllAvalabelParagliderModels();
             return View(model);
         }
+        [HttpGet]
+        public ActionResult Details(int id)
+        {
+            DetailedParagliderModel Sp = new DetailedParagliderModel(_context);
+            var model = Sp.getSpecificParagliderModel(id);
+            return View("Details", model);
+        }
     }
 }

@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+@model Paraglider.sl.DTOs.ParagliderModelDetailDTO
+
+<h1>Details</h1>
+<div>
+    <table>
+        <tr> Model name : @Model.ModelName</tr>
+        <br />
+        <tr> Model type : @Model.ModelType</tr>
+        <br />
+        <tr>Maximum pilot weight : @Model.MaximumWeight</tr>
+        <br />
+        <tr>Minim pilot weight : @Model.MinimalWeight</tr>
+        <br />
+        <tr>Model size : @Model.Size</tr>
+        <br />
+        <tr>Homologation Number : @Model.NumberOfHomologation</tr>
+        <br />
+        <tr>Number of paraglider from this model : @Model.NumberOfThisModel</tr>
+        <br />
+    </table>
+</div>
