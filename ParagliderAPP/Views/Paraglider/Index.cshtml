@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+@model IEnumerable<Paraglider.sl.DTOs.ParagliderDTO>
+
+<form method="Post">
+    <div class="form-group">
+        <div class="input-group">
+            <input type="search" class="form-control" name="name" value="" />
+            <div class="input-group-append">
+                <button class="btn btn-secondary">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</form>
+@foreach (var Paraglider in Model)
+{
+    <table style="font-family:Arial;margin:5px ;border: 1px solid black;width: 450px">
+        <thead>
+            <tr>
+                <th>id </th>
+                <th>Paraglider model name</th>
+                <th>Total hours flight</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+
+            <tr>
+                <th>@Paraglider.Id </th>
+                <th>@Paraglider.ParagliderModelName</th>
+                <th>@Paraglider.TotalHoursFlight</th>
+                <th>@Html.ActionLink("Details", "Details", new { id = Paraglider.Id })</th>
+                <th>@Html.ActionLink("Paraglider model", "Details", new { id = Paraglider.ParagliderModelId })</th>
+            </tr>
+
+        </tbody>
+    </table>
+}

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Paraglider.sl.DTOs
 {
-    class ParagliderDTO
+    public class ParagliderDTO
     {
         public int Id { get; set; }
         public decimal TotalHoursFlight { get; set; }

@@ -33,7 +33,11 @@ namespace ParagliderAPP.Controllers
         }
         public IActionResult Paraglider()
         {
-            return View();
+            return RedirectToAction("Index", "Paraglider");
+        }
+        public IActionResult ParagliderModel()
+        {
+            return RedirectToAction("Index","ParagliderModel");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Paraglider.sl.DTOs
 {
-    class ParagliderDetailDTO
+    public class ParagliderDetailDTO
     {
         public int Id { get; set; }
         public DateTime DateOfService { get; set; }

@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Paraglider.sl.Queries
 {
-    class SimpleParaglider
+    public class SimpleParaglider
     {
         private readonly ParagliderContext _context;
 
