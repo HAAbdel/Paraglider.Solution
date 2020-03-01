@@ -88,7 +88,17 @@ namespace ParagliderAPP.Controllers
         [HttpGet]
         public ActionResult Creation ()
         {
-            return View();
+            var roles = new RoleList(_context).GetAllAvalableRoles();
+            PilotAndRoleMergeViewModel model = new PilotAndRoleMergeViewModel()
+            {
+                Roles = roles
+            };
+            return View(model);
         }
+        //[HttpPost]
+        //public ActionResult Creation (PilotDetailDto NewPilot)
+        //{
+            
+        //}
     }
 }

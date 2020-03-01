@@ -18,9 +18,8 @@
         </div>
     </div>
 </form>
-@foreach (var Paraglider in Model)
-{
-    <table style="font-family:Arial;margin:15px ;border: 1px solid black;width: auto">
+<div class="table-responsive-lg">
+    <table class="table table-borderless table-hover table-striped">
         <thead>
             <tr>
                 <th>id </th>
@@ -29,13 +28,16 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th>@Paraglider.Id </th>
-                <th>@Paraglider.ParagliderModelName</th>
-                <th>@Paraglider.TotalHoursFlight</th>
-                <th>@Html.ActionLink("Details", "Details", new { id = Paraglider.Id })</th>
-                <th>@Html.ActionLink("Paraglider model", "Details","ParagliderModel", new { id = Paraglider.ParagliderModelId })</th>
-            </tr>
+            @foreach (var Paraglider in Model)
+            {
+                <tr onclick="location.href = '@(Url.Action("Details", "Paraglider", new { id = Paraglider.Id }))'">
+                    <th>@Paraglider.Id </th>
+                    <th>@Paraglider.ParagliderModelName</th>
+                    <th>@Paraglider.TotalHoursFlight</th>
+                    <th>@Html.ActionLink("Details", "Details", new { id = Paraglider.Id })</th>
+                    <th>@Html.ActionLink("Paraglider model", "Details", "ParagliderModel", new { id = Paraglider.ParagliderModelId })</th>
+                </tr>
+            }
         </tbody>
     </table>
-}
+</div>

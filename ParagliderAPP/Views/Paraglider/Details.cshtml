@@ -8,7 +8,7 @@
 <h1>Details</h1>
 <div>
     <table>
-        <tr> Name : @Model.paragliderModel.ModelName</tr>
+        <tr> Name : @Html.ActionLink(Model.paragliderModel.ModelName, "Details", "ParagliderModel", new { id = Model.paragliderModel.Id })</tr>
         <br />
         <tr> type : @Model.paragliderModel.ModelType</tr>
         <br />
@@ -18,7 +18,6 @@
         <br />
         <tr>Date of service : @Model.DateOfService</tr>
         <br />
-        <th>@Html.ActionLink(Model.paragliderModel.ModelName, "Details","ParagliderModel", new { id = Model.paragliderModel.Id })</th>
 
     </table>
 </div>
