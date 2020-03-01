@@ -30,7 +30,15 @@ namespace ParagliderAPP.Controllers
         public ViewResult Index(string name)
         {
             SimplePilot Sp = new SimplePilot(_context);
-            var model = Sp.GetPilotByName(name);
+            IEnumerable<PilotDto> model = null;
+            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(name))
+            {
+                model = Sp.GetAllPilots();
+            }
+            else
+            {
+                model = Sp.GetPilotByName(name);
+            }
             return View(model);
         }
 
@@ -76,6 +84,11 @@ namespace ParagliderAPP.Controllers
             DetailedPilot Dp = new DetailedPilot(_context);
             var model = Dp.GetSpecific(id);
             return View("Details", model);
+        }
+        [HttpGet]
+        public ActionResult Creation ()
+        {
+            return View();
         }
     }
 }
