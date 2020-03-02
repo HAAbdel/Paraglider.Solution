@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewData["Title"] = "Details";
+}
+
+@model Paraglider.sl.DTOs.ParagliderDetailDTO
+
+<h1>Details</h1>
+<div>
+    <table>
+        <tr> Name : @Html.ActionLink(Model.paragliderModel.ModelName, "Details", "ParagliderModel", new { id = Model.paragliderModel.Id })</tr>
+        <br />
+        <tr> type : @Model.paragliderModel.ModelType</tr>
+        <br />
+        <tr>Toltal flight hours : @Model.FlightHours</tr>
+        <br />
+        <tr>Date of use : @Model.DateOfUse</tr>
+        <br />
+        <tr>Date of service : @Model.DateOfService</tr>
+        <br />
+
+    </table>
+</div>

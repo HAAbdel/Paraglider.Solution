@@ -4,9 +4,10 @@ using System.Text;
 
 namespace Paraglider.sl.DTOs
 {
-    public class RoleDTO
+    public class ParagliderModelDTO
     {
         public int Id { get; set; }
-        public string RoleName { get; set; }
+        public string ModelName { get; set; }
+        public string ModelType { get; set; }
     }
 }

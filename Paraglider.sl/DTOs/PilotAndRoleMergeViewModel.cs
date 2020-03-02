@@ -9,7 +9,7 @@ namespace Paraglider.sl.DTOs
     public class PilotAndRoleMergeViewModel
     {
         public PilotDetailDto PilotDetail { get; set; }
-        public IEnumerable<RoleDto> Roles { get; set; }
+        public IEnumerable<RoleDTO> Roles { get; set; }
 
         internal Pilot ToPilot()
         {

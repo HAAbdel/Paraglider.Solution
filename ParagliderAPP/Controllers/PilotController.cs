@@ -30,14 +30,21 @@ namespace ParagliderAPP.Controllers
         public ViewResult Index(string name)
         {
             SimplePilot Sp = new SimplePilot(_context);
-            var model = Sp.GetPilotByName(name);
+            IEnumerable<PilotDto> model = null;
+            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(name))
+            {
+                model = Sp.GetAllPilots();
+            }
+            else
+            {
+                model = Sp.GetPilotByName(name);
+            }
             return View(model);
         }
 
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            // FAIRE LE BINDING AU MODEL 
             RoleList Rl = new RoleList(_context);
             DetailedPilot Dp = new DetailedPilot(_context);
             PilotAndRoleMergeViewModel myModel = new PilotAndRoleMergeViewModel
@@ -53,28 +60,45 @@ namespace ParagliderAPP.Controllers
         public ActionResult Edit(PilotAndRoleMergeViewModel pilotForUpdate )
         {
             DetailedPilot Sp = new DetailedPilot(_context);
+            PilotAndRoleMergeViewModel model = new PilotAndRoleMergeViewModel();
 
-            Role tempRole = _context.Roles.Where(r => r.RoleId == pilotForUpdate.PilotDetail.Role.RoleId).IgnoreQueryFilters().First();
-            tempRole.IsActive = true;
-            _context.Roles.Update(tempRole);
-            _context.SaveChanges();
-            PilotAndRoleMergeViewModel model = Sp.UpdatePilot(pilotForUpdate);
+            try
+            {
+                model = Sp.UpdatePilot(pilotForUpdate);
+            }
+            catch(DbUpdateException exceptionCatched)
+            {
+                //If the SaveChange() as crashed ! 
+            }
+            //Actualize the Roles
+            pilotForUpdate.Roles = new RoleList(_context).GetAllAvalableRoles();
+            pilotForUpdate.PilotDetail = new DetailedPilot(_context).GetSpecific(pilotForUpdate.PilotDetail.Id);
+
+            //Send the model to the View
             return View(model);
         }
 
         [HttpGet]
         public ActionResult Details(int id)
         {
-            
             DetailedPilot Dp = new DetailedPilot(_context);
             var model = Dp.GetSpecific(id);
             return View("Details", model);
         }
-
-
-       
-
-
+        [HttpGet]
+        public ActionResult Creation ()
+        {
+            var roles = new RoleList(_context).GetAllAvalableRoles();
+            PilotAndRoleMergeViewModel model = new PilotAndRoleMergeViewModel()
+            {
+                Roles = roles
+            };
+            return View(model);
+        }
+        //[HttpPost]
+        //public ActionResult Creation (PilotDetailDto NewPilot)
+        //{
+            
+        //}
     }
-      
 }

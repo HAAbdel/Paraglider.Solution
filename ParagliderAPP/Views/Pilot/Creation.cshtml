@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewData["Title"] = "Creation";
+}
+
+@model Paraglider.sl.DTOs.PilotAndRoleMergeViewModel
+
+    <form method="post">
+        <select class="custom-select custom-select-sm">
+            @foreach (var role in Model.Roles)
+            {
+                <option value="@role.Id">@role.RoleName</option>
+            }
+            <option value="@null">Default role</option>
+        </select>
+    </form>

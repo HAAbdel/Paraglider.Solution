@@ -12,21 +12,25 @@
     <input type="hidden" asp-for="PilotDetail.Id" />
     <div class="form-group">
         <label asp-for="PilotDetail.LastName"></label>
-        <input asp-for="PilotDetail.LastName" class="form-control" />
+        <input asp-for="PilotDetail.LastName" class="form-control form-control-sm" />
         <label asp-for="PilotDetail.FirstName"></label>
-        <input asp-for="PilotDetail.FirstName" class="form-control" />
+        <input asp-for="PilotDetail.FirstName" class="form-control form-control-sm" />
         <label asp-for="PilotDetail.Email"></label>
-        <input asp-for="PilotDetail.Email" class="form-control" />
+        <input asp-for="PilotDetail.Email" class="form-control form-control-sm" />
         <label asp-for="PilotDetail.PhoneNumber"></label>
-        <input asp-for="PilotDetail.PhoneNumber" class="form-control" />
+        <input asp-for="PilotDetail.PhoneNumber" class="form-control form-control-sm" />
         <label asp-for="PilotDetail.Weight"></label>
-        <input asp-for="PilotDetail.Weight" class="form-control" />
+        <input asp-for="PilotDetail.Weight" class="form-control form-control-sm" />
         <label asp-for="PilotDetail.Role">Role Actuel @Model.PilotDetail.Role.RoleName</label>
-        <select asp-for="PilotDetail.Role.RoleId" class="form-control">
+        <select asp-for="PilotDetail.Role.RoleId" class="custom-select custom-select-sm">
             <option value="@Model.PilotDetail.Role.RoleId">@Model.PilotDetail.Role.RoleName</option>
             @foreach (var role in Model.Roles)
             {
                 <option value="@role.Id">@role.RoleName</option>
+            }
+            @if (Model.PilotDetail.Role.RoleId != -1)
+            {
+                <option value="@null">Default role</option>
             }
         </select>
    </div>

@@ -20,9 +20,9 @@
             </div>
         </div>
     </form>
-    @foreach (var pilot in Model)
-    {
-        <table style="font-family:Arial;margin:5px ;border: 1px solid black;width: 450px">
+    <p> clicker sur le pilot pour plus de details</p>
+    <div class="table-responsive-lg">
+        <table class="table table-borderless table-hover table-striped">
             <thead>
                 <tr>
                     <th>id </th>
@@ -31,19 +31,20 @@
                 </tr>
             </thead>
             <tbody>
-
-                
-
-                <tr>
-                    <th>@pilot.Id </th>
-                    <th>@pilot.FirstName</th>
-                    <th>@pilot.LastName</th>
-                    <th>@Html.ActionLink("Edit", "Edit", new { id = pilot.Id })</th>
-                    <th>@Html.ActionLink("Details", "Details", new { id = pilot.Id })</th>
-                </tr>
-                
+                @foreach (var pilot in Model)
+                {
+                    <tr onclick="location.href = '@(Url.Action("Details", "Pilot", new { id = pilot.Id }))'">
+                        <th>@pilot.Id </th>
+                        <th>@pilot.FirstName</th>
+                        <th>@pilot.LastName</th>
+                        <td>@Html.ActionLink("Edit", "Edit", new { id = pilot.Id })</td>
+                    </tr>
+                }
             </tbody>
         </table>
-    }
+    </div>
+    <div>
+        <button type="button" class="btn btn-outline-primary" onclick="location.href = '@Url.Action("Creation","Pilot")'">Create a pilot</button>
+    </div>
 </body>
 </html> 
