@@ -7,6 +7,7 @@ namespace Paraglider.sl.DTOs
 {
     public class ParagliderDetailDTO
     {
+
         public int Id { get; set; }
         public DateTime DateOfService { get; set; }
         public DateTime DateOfUse { get; set; }

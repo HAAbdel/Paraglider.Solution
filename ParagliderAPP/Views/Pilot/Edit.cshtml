@@ -11,8 +11,13 @@
 
     <input type="hidden" asp-for="PilotDetail.Id" />
     <div class="form-group">
+        <div>
+            <span asp-validation-for="PilotDetail.LastName" class="text-danger"></span><br />
+            <span asp-validation-for="PilotDetail.FirstName" class="text-danger"></span>
+        </div>
+        
         <label asp-for="PilotDetail.LastName"></label>
-        <input asp-for="PilotDetail.LastName" class="form-control form-control-sm" />
+        <input asp-for="PilotDetail.LastName" class="form-control form-control-sm"  />
         <label asp-for="PilotDetail.FirstName"></label>
         <input asp-for="PilotDetail.FirstName" class="form-control form-control-sm" />
         <label asp-for="PilotDetail.Email"></label>
@@ -33,7 +38,7 @@
                 <option value="@null">Default role</option>
             }
         </select>
-   </div>
+    </div>
     <button type="submit" class="btn btn-primary">save</button>
 </form>
 

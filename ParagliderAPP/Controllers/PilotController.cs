@@ -61,7 +61,11 @@ namespace ParagliderAPP.Controllers
         {
             DetailedPilot Sp = new DetailedPilot(_context);
             PilotAndRoleMergeViewModel model = new PilotAndRoleMergeViewModel();
-
+            pilotForUpdate.Roles = new RoleList(_context).GetAllAvalableRoles();
+            if (!ModelState.IsValid)
+            {
+                return View(pilotForUpdate);
+            }
             try
             {
                 model = Sp.UpdatePilot(pilotForUpdate);
@@ -71,7 +75,7 @@ namespace ParagliderAPP.Controllers
                 //If the SaveChange() as crashed ! 
             }
             //Actualize the Roles
-            pilotForUpdate.Roles = new RoleList(_context).GetAllAvalableRoles();
+          
             pilotForUpdate.PilotDetail = new DetailedPilot(_context).GetSpecific(pilotForUpdate.PilotDetail.Id);
 
             //Send the model to the View

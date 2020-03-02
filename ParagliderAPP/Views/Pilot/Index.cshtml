@@ -33,12 +33,14 @@
             <tbody>
                 @foreach (var pilot in Model)
                 {
+                
                     <tr onclick="location.href = '@(Url.Action("Details", "Pilot", new { id = pilot.Id }))'">
                         <th>@pilot.Id </th>
                         <th>@pilot.FirstName</th>
                         <th>@pilot.LastName</th>
                         <td>@Html.ActionLink("Edit", "Edit", new { id = pilot.Id })</td>
                     </tr>
+                
                 }
             </tbody>
         </table>
