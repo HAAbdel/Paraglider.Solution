@@ -52,22 +52,13 @@ namespace ParagliderAPP.Controllers
         [HttpPost]
         public ActionResult Edit(PilotAndRoleMergeViewModel pilotForUpdate )
         {
+            DetailedPilot Sp = new DetailedPilot(_context);
+
             Role tempRole = _context.Roles.Where(r => r.RoleId == pilotForUpdate.PilotDetail.Role.RoleId).IgnoreQueryFilters().First();
             tempRole.IsActive = true;
             _context.Roles.Update(tempRole);
             _context.SaveChanges();
-            if (!ModelState.IsValid)
-            {
-                pilotForUpdate.Roles = new RoleList(_context).GetAllAvalableRoles();
-                return View("Edit", pilotForUpdate);
-            }
-          
-          
-            DetailedPilot Sp = new DetailedPilot(_context);
-
-         
             PilotAndRoleMergeViewModel model = Sp.UpdatePilot(pilotForUpdate);
-         
             return View(model);
         }
 
