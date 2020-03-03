@@ -10,8 +10,8 @@ using Paraglider.DAL;
 namespace Paraglider.DAL.Migrations
 {
     [DbContext(typeof(ParagliderContext))]
-    [Migration("20200225140210_First")]
-    partial class First
+    [Migration("20200303093804_second")]
+    partial class second
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
