@@ -6,12 +6,34 @@
 @model Paraglider.sl.DTOs.PilotAndRoleMergeViewModel
 
     <form method="post">
+        <div class="container">
+            <label asp-for="PilotDetail.FirstName"></label>
+            <input asp-for="PilotDetail.FirstName" class="form-control form-control-sm" />
 
-        <select class="custom-select custom-select-sm">
-            @foreach (var role in Model.Roles)
-            {
-                <option value="@role.Id">@role.RoleName</option>
-            }
-            <option value="@null">Default role</option>
-        </select>
+            <label asp-for="PilotDetail.LastName"></label>
+            <input asp-for="PilotDetail.LastName" class="form-control form-control-sm" />
+
+            <label asp-for="PilotDetail.Email"></label>
+            <input asp-for="PilotDetail.Email" class="form-control form-control-sm" />
+
+            <label asp-for="PilotDetail.PhoneNumber"></label>
+            <input asp-for="PilotDetail.PhoneNumber" class="form-control form-control-sm" />
+
+            <label asp-for="PilotDetail.Weight"></label>
+            <input asp-for="PilotDetail.Weight" class="form-control form-control-sm" />
+            <br />
+            <label asp-for="PilotDetail.Role"></label>
+            <select asp-for="PilotDetail.Role.RoleId" class="custom-select custom-select-sm">
+                @foreach (var role in Model.Roles)
+                {
+                    <option value="@role.Id">@role.RoleName</option>
+                }
+                <option value="-1">Default role</option>
+            </select>
+        </div>
+
+        <br />
+        <div class="col-2">
+            <button type="submit" class="btn btn-primary">Create</button>
+        </div>
     </form>

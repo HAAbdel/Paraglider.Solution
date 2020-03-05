@@ -48,7 +48,7 @@
 
             <div class="col-12 form-group">
                 <!--Afficher le role actuel du pilot , si le role n'était pas défini afficher Default role-->
-                @if (Model.PilotDetail.Role.RoleName == null)
+                @if (Model.PilotDetail.Role.RoleId == -1)
                 {
                     <label asp-for="PilotDetail.Role">Role Actuel Default role</label>
                 }
@@ -58,9 +58,9 @@
                 }
                 <select asp-for="PilotDetail.Role.RoleId" class="custom-select custom-select-sm">
                     <!--Role Selection en premier dans le select qui est le role atm du pilot-->
-                    @if (Model.PilotDetail.Role.RoleName == null)
+                    @if (Model.PilotDetail.Role.RoleId == -1)
                     {
-                        <option value="@null">Default role</option>
+                        <option value="-1">Default role</option>
                     }
                     else
                     {
@@ -74,7 +74,7 @@
                     <!--Si le role n'était pas un le role par defaut, afficher cette option -->
                     @if (Model.PilotDetail.Role.RoleId != -1)
                     {
-                        <option value="@null">Default role</option>
+                        <option value="-1">Default role</option>
                     }
                 </select>
             </div>

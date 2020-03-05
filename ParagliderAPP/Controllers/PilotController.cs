@@ -59,14 +59,19 @@ namespace ParagliderAPP.Controllers
         [HttpPost]
         public ActionResult Edit(PilotAndRoleMergeViewModel pilotForUpdate )
         {
-            pilotForUpdate.Roles = new RoleList(_context).GetAllAvalableRoles();
+            //If The role is Default Role so the new role for this pilot will be null
+            if (pilotForUpdate.PilotDetail.Role.RoleId == -1)
+                pilotForUpdate.PilotDetail.Role = null;
+
             if (!ModelState.IsValid)
             {
+                pilotForUpdate.Roles = new RoleList(_context).GetAllAvalableRoles();
                 return View(pilotForUpdate);
             }
 
             DetailedPilot Sp = new DetailedPilot(_context);
             PilotAndRoleMergeViewModel model = new PilotAndRoleMergeViewModel();
+
             try
             {
                 model = Sp.UpdatePilot(pilotForUpdate);
@@ -76,8 +81,8 @@ namespace ParagliderAPP.Controllers
                 //If the SaveChange() as crashed !  
             }
             //Actualize the Roles
-          
-            pilotForUpdate.PilotDetail = new DetailedPilot(_context).GetSpecific(pilotForUpdate.PilotDetail.Id);
+            model.Roles = new RoleList(_context).GetAllAvalableRoles();
+            model.PilotDetail = new DetailedPilot(_context).GetSpecific(pilotForUpdate.PilotDetail.Id);
 
             //Send the model to the View
             return View(model);
@@ -100,10 +105,17 @@ namespace ParagliderAPP.Controllers
             };
             return View(model);
         }
-        //[HttpPost]
-        //public ActionResult Creation (PilotDetailDto NewPilot)
-        //{
-            
-        //}
+
+        [HttpPost]
+        public ActionResult Creation(PilotAndRoleMergeViewModel NewPilot)
+        {
+            if (NewPilot.PilotDetail.Role.RoleId == -1)
+                NewPilot.PilotDetail.Role = null;
+
+            PilotDetailDto pilotDtoToCreate = NewPilot.PilotDetail;
+            new DetailedPilot(_context).CreateNewPilot(pilotDtoToCreate);
+
+            return RedirectToAction("Index");
+        }
     }
 }
