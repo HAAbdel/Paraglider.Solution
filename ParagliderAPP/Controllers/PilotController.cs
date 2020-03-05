@@ -59,20 +59,21 @@ namespace ParagliderAPP.Controllers
         [HttpPost]
         public ActionResult Edit(PilotAndRoleMergeViewModel pilotForUpdate )
         {
-            DetailedPilot Sp = new DetailedPilot(_context);
-            PilotAndRoleMergeViewModel model = new PilotAndRoleMergeViewModel();
             pilotForUpdate.Roles = new RoleList(_context).GetAllAvalableRoles();
             if (!ModelState.IsValid)
             {
                 return View(pilotForUpdate);
             }
+
+            DetailedPilot Sp = new DetailedPilot(_context);
+            PilotAndRoleMergeViewModel model = new PilotAndRoleMergeViewModel();
             try
             {
                 model = Sp.UpdatePilot(pilotForUpdate);
             }
             catch(DbUpdateException exceptionCatched)
             {
-                //If the SaveChange() as crashed ! 
+                //If the SaveChange() as crashed !  
             }
             //Actualize the Roles
           

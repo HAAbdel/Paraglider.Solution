@@ -21,29 +21,28 @@
         </div>
     </form>
     <p> clicker sur le pilot pour plus de details</p>
-    <div class="table-responsive-lg">
-        <table class="table table-borderless table-secondary table-hover table-striped">
-            <thead class="thead-dark">
-                <tr>
-                    <th>id </th>
-                    <th>first</th>
-                    <th>last</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var pilot in Model)
-                {
-                    <tr style="cursor: pointer;" onclick="location.href = '@(Url.Action("Details", "Pilot", new { id = pilot.Id }))'">
-                        <th>@pilot.Id </th>
-                        <th>@pilot.FirstName</th>
-                        <th>@pilot.LastName</th>
-                        <td>@Html.ActionLink("Edit", "Edit", new { id = pilot.Id })</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
+        <div class="table-responsive-lg container">
+            <table class="table table-borderless table-secondary table-hover table-striped">
+                <thead class="thead-dark">
+                    <tr class="d-flex">
+                        <th class="col-1">id </th>
+                        <th class="col-5">first</th>
+                        <th class="col-4">last</th>
+                        <th class="col-2"></th>
+                </thead>
+                <tbody>
+                    @foreach (var pilot in Model)
+                    {
+                        <tr style="cursor: pointer;" class="d-flex">
+                            <td class="col-sm-1" onclick="location.href = '@(Url.Action("Details", "Pilot", new { id = pilot.Id }))'">@pilot.Id </td>
+                            <td class="col-sm-5" onclick="location.href = '@(Url.Action("Details", "Pilot", new { id = pilot.Id }))'">@pilot.FirstName</td>
+                            <td class="col-sm-4" onclick="location.href = '@(Url.Action("Details", "Pilot", new { id = pilot.Id }))'">@pilot.LastName</td>
+                            <td onclick="location.href = '@Url.Action("Edit","Pilot",pilot)'" class="col-sm-2"><button type="button" class="btn btn-primary">Edit Pilot</button></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     <div>
         <button type="button" class="btn btn-outline-primary" onclick="location.href = '@Url.Action("Creation","Pilot")'">Create a pilot</button>
     </div>
