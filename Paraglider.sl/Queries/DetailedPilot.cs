@@ -74,8 +74,8 @@ namespace Paraglider.sl.Queries
             pilotFromDB.Weight = pilotDetailDto.PilotDetail.Weight;
             pilotFromDB.PhoneNumber = pilotDetailDto.PilotDetail.PhoneNumber;
 
-
-            pilotFromDB.Role = _config.Roles.Where(r => r.RoleId == pilotDetailDto.PilotDetail.Role.RoleId).First();
+            pilotFromDB.Role = _config.Roles.Where(r => r.RoleId == pilotFromDB.Role.RoleId).IgnoreQueryFilters().First();
+            pilotDetailDto.PilotDetail.Role = _config.Roles.Where(r => r.RoleId == pilotDetailDto.PilotDetail.Role.RoleId).IgnoreQueryFilters().First();
 
             RoleModificationManager(pilotDetailDto.PilotDetail, pilotFromDB);
 
@@ -104,6 +104,8 @@ namespace Paraglider.sl.Queries
                     roleToSetActive.Pilot = pPilotFromDb;
 
                     _config.Roles.Update(roleToSetActive);
+
+                    _config.SaveChanges();
                 }
                 //If the pilot NO role and don't want one
             }
@@ -127,6 +129,8 @@ namespace Paraglider.sl.Queries
                         roleToSetInactive.Pilot = null;
 
                         _config.Roles.Update(roleToSetInactive);
+
+                        _config.SaveChanges();
                     }
                     else
                     {
@@ -142,6 +146,8 @@ namespace Paraglider.sl.Queries
                     roleToSetInactive.Pilot = null;
 
                     _config.Roles.Update(roleToSetInactive);
+
+                    _config.SaveChanges();
                 }
             }
 
