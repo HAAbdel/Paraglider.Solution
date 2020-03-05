@@ -1,73 +1,88 @@
 ﻿
 @{
-    
+
     ViewData["Title"] = "edit";
 }
 
 @model Paraglider.sl.DTOs.PilotAndRoleMergeViewModel
-<h1>edit</h1>
- 
+
+
 <form method="post">
 
     <input type="hidden" asp-for="PilotDetail.Id" />
-    <div class="form-group">
-        <div>
-            <span asp-validation-for="PilotDetail.LastName" class="text-danger"></span><br />
-            <span asp-validation-for="PilotDetail.FirstName" class="text-danger"></span>
-        </div>
-        <div class="container">
-            <div class="row">
+
+    <div class="container">
+        <div class="col-4"></div>
+        <div id="formulaireedit" class="col-4">
+            <h1>edit</h1>
+
+            <div class="form-group">
+
+                <div class="col-12"></div>
+                <span asp-validation-for="PilotDetail.LastName" class="text-danger"></span><br />
+                <span asp-validation-for="PilotDetail.FirstName" class="text-danger"></span>
+            </div>
+
+            <div class="col-12 form-group">
                 <label asp-for="PilotDetail.LastName" class="col-auto"></label>
                 <input asp-for="PilotDetail.LastName" class="form-control form-control-sm col" />
+            </div>
+            <div class="col-12 form-group">
                 <label asp-for="PilotDetail.FirstName" class="col-auto"></label>
                 <input asp-for="PilotDetail.FirstName" class="form-control form-control-sm col" />
-                <div class="col-4"></div>
+
             </div>
-            <div class="row">
+            <div class="col-12 form-group">
                 <label asp-for="PilotDetail.Email" class="col-auto"></label>
                 <input asp-for="PilotDetail.Email" class="form-control form-control-sm col" />
+            </div>
+            <div class="col-12 form-group">
                 <label asp-for="PilotDetail.PhoneNumber" class="col-auto"></label>
                 <input asp-for="PilotDetail.PhoneNumber" class="form-control form-control-sm col" />
+            </div>
+            <div class="col-12 form-group">
                 <label asp-for="PilotDetail.Weight" class="col-auto"></label>
                 <input asp-for="PilotDetail.Weight" class="form-control form-control-sm col" />
             </div>
+
+
+            <div class="col-12 form-group">
+                <!--Afficher le role actuel du pilot , si le role n'était pas défini afficher Default role-->
+                @if (Model.PilotDetail.Role.RoleName == null)
+                {
+                    <label asp-for="PilotDetail.Role">Role Actuel Default role</label>
+                }
+                else
+                {
+                    <label asp-for="PilotDetail.Role">Role Actuel @Model.PilotDetail.Role.RoleName</label>
+                }
+                <select asp-for="PilotDetail.Role.RoleId" class="custom-select custom-select-sm">
+                    <!--Role Selection en premier dans le select qui est le role atm du pilot-->
+                    @if (Model.PilotDetail.Role.RoleName == null)
+                    {
+                        <option value="@null">Default role</option>
+                    }
+                    else
+                    {
+                        <option value="@Model.PilotDetail.Role.RoleId">@Model.PilotDetail.Role.RoleName</option>
+                    }
+                    <!--Afficher les autres roles disponible-->
+                    @foreach (var role in Model.Roles)
+                    {
+                        <option value="@role.Id">@role.RoleName</option>
+                    }
+                    <!--Si le role n'était pas un le role par defaut, afficher cette option -->
+                    @if (Model.PilotDetail.Role.RoleId != -1)
+                    {
+                        <option value="@null">Default role</option>
+                    }
+                </select>
+            </div>
+
+            <div class="col-12 form-group">
+                <button type="submit" class="btn btn-primary">save</button>
+            </div>
         </div>
-    </div>
-    <div class="col-2">
-        <!--Afficher le role actuel du pilot , si le role n'était pas défini afficher Default role-->
-        @if (Model.PilotDetail.Role.RoleName == null)
-        {
-            <label asp-for="PilotDetail.Role">Role Actuel Default role</label>
-        }
-        else
-        {
-        <label asp-for="PilotDetail.Role">Role Actuel @Model.PilotDetail.Role.RoleName</label>
-        }
-    <select asp-for="PilotDetail.Role.RoleId" class="custom-select custom-select-sm">
-        <!--Role Selection en premier dans le select qui est le role atm du pilot-->
-        @if (Model.PilotDetail.Role.RoleName == null)
-        {
-            <option value="@null">Default role</option>
-        }
-        else
-        {
-            <option value="@Model.PilotDetail.Role.RoleId">@Model.PilotDetail.Role.RoleName</option>
-        }
-        <!--Afficher les autres roles disponible-->
-        @foreach (var role in Model.Roles)
-        {
-            <option value="@role.Id">@role.RoleName</option>
-        }
-        <!--Si le role n'était pas un le role par defaut, afficher cette option -->
-        @if (Model.PilotDetail.Role.RoleId != -1)
-        {
-            <option value="@null">Default role</option>
-        }
-    </select>
-    </div>
-    <br />
-    <div class="col-2">
-        <button type="submit" class="btn btn-primary">save</button>
     </div>
 </form>
 
