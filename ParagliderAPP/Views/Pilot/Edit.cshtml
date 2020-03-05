@@ -12,23 +12,18 @@
     <input type="hidden" asp-for="PilotDetail.Id" />
 
     <div class="container">
-        <div class="col-4"></div>
+        <div class="col-4">
+        </div>
         <div id="formulaireedit" class="col-4">
-            <h1>edit</h1>
-
-            <div class="form-group">
-
-                <div class="col-12"></div>
-                <span asp-validation-for="PilotDetail.LastName" class="text-danger"></span><br />
-                <span asp-validation-for="PilotDetail.FirstName" class="text-danger"></span>
-            </div>
-
+            <h1>edit</h1>    
             <div class="col-12 form-group">
-                <label asp-for="PilotDetail.LastName" class="col-auto"></label>
+                <label asp-for="PilotDetail.LastName" class="col-auto"></label><br />
+                <span asp-validation-for="PilotDetail.LastName" class="text-danger"></span>
                 <input asp-for="PilotDetail.LastName" class="form-control form-control-sm col" />
             </div>
             <div class="col-12 form-group">
-                <label asp-for="PilotDetail.FirstName" class="col-auto"></label>
+                <label asp-for="PilotDetail.FirstName" class="col-auto"></label><br />
+                <span asp-validation-for="PilotDetail.FirstName" class="text-danger"></span>
                 <input asp-for="PilotDetail.FirstName" class="form-control form-control-sm col" />
 
             </div>
