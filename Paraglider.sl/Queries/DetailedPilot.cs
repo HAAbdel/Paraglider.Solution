@@ -74,8 +74,10 @@ namespace Paraglider.sl.Queries
             pilotFromDB.Weight = pilotDetailDto.PilotDetail.Weight;
             pilotFromDB.PhoneNumber = pilotDetailDto.PilotDetail.PhoneNumber;
 
-            pilotFromDB.Role = _config.Roles.Where(r => r.RoleId == pilotFromDB.Role.RoleId).IgnoreQueryFilters().First();
-            pilotDetailDto.PilotDetail.Role = _config.Roles.Where(r => r.RoleId == pilotDetailDto.PilotDetail.Role.RoleId).IgnoreQueryFilters().First();
+            if(pilotFromDB.RoleId != null)
+                pilotFromDB.Role = _config.Roles.Where(r => r.RoleId == pilotFromDB.RoleId).IgnoreQueryFilters().First();
+            if(pilotDetailDto.PilotDetail.Role != null)
+                pilotDetailDto.PilotDetail.Role = _config.Roles.Where(r => r.RoleId == pilotDetailDto.PilotDetail.Role.RoleId).IgnoreQueryFilters().First();
 
             RoleModificationManager(pilotDetailDto.PilotDetail, pilotFromDB);
 
