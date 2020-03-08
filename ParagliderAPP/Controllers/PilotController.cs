@@ -117,5 +117,18 @@ namespace ParagliderAPP.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+
+            //if (PilotToDelete.PilotDetail.Role.RoleId == -1)
+            //    PilotToDelete.PilotDetail.Role = null;
+
+            //PilotDetailDto pilotDtoToDelete = PilotToDelete.PilotDetail;
+            //new DetailedPilot(_context).RemovingPilot(pilotDtoToDelete);
+
+            return RedirectToAction("Index");
+        }
     }
 }
