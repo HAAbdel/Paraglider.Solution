@@ -55,7 +55,9 @@
                                     <td class="col-4" onclick="location.href = '@(Url.Action("Details", "Pilot", new { id = pilot.Id }))'">@pilot.LastName</td>
                                     <td class="col-3 row">
                                         <button type="button" class="btn btn-primary" onclick="location.href = '@Url.Action("Edit","Pilot",pilot)'">Edit Pilot</button>
-                                        <button type="button" class="btn btn-danger  ml-auto" onclick="location.href = '@(Url.Action("Delete", "Pilot", new { id = pilot.Id }))'">@pilot.Id</button>
+                                        <button type="button" class="fas fa-trash"  ml-auto" onclick="location.href = '@(Url.Action("Delete", "Pilot", new { id = pilot.Id }))'">
+                                       
+                                        </button>
                                     </td>
                                 </tr>
                             }
