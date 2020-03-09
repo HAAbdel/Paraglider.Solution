@@ -18,25 +18,27 @@
         </div>
     </div>
 </form>
-<div class="table-responsive-lg">
-    <table class="table table-borderless table-hover table-striped">
-        <thead>
-            <tr>
-                <th>id </th>
-                <th>Paraglider model name</th>
-                <th>Total hours flight</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var Paraglider in Model)
-            {
-                <tr style="cursor : pointer" onclick="location.href = '@(Url.Action("Details", "Paraglider", new { id = Paraglider.Id }))'">
-                    <th>@Paraglider.Id </th>
-                    <th>@Paraglider.ParagliderModelName</th>
-                    <th>@Paraglider.TotalHoursFlight</th>
-                    <th>@Html.ActionLink("Paraglider model", "Details", "ParagliderModel", new { id = Paraglider.ParagliderModelId })</th>
+<div id="formulaireedit">
+    <div class="table-responsive-lg">
+        <table class="table table-borderless table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>id </th>
+                    <th>Paraglider model name</th>
+                    <th>Total hours flight</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var Paraglider in Model)
+                {
+                    <tr style="cursor : pointer" onclick="location.href = '@(Url.Action("Details", "Paraglider", new { id = Paraglider.Id }))'">
+                        <th>@Paraglider.Id </th>
+                        <th>@Paraglider.ParagliderModelName</th>
+                        <th>@Paraglider.TotalHoursFlight</th>
+                        <th>@Html.ActionLink("Paraglider model", "Details", "ParagliderModel", new { id = Paraglider.ParagliderModelId })</th>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>

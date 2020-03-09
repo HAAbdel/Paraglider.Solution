@@ -45,6 +45,8 @@
                                 <th class="col-4">first name</th>
                                 <th class="col-4">last name</th>
                                 <th class="col-3"></th>
+                            </tr>
+                            <tr></tr>
                         </thead>
                         <tbody>
                             @foreach (var pilot in Model)
@@ -55,24 +57,28 @@
                                     <td class="col-4" onclick="location.href = '@(Url.Action("Details", "Pilot", new { id = pilot.Id }))'">@pilot.LastName</td>
                                     <td class="col-3 row">
                                         <button type="button" class="btn btn-primary" onclick="location.href = '@Url.Action("Edit","Pilot",pilot)'">Edit Pilot</button>
-                                        <button type="button" class="fas fa-trash"  ml-auto" onclick="location.href = '@(Url.Action("Delete", "Pilot", new { id = pilot.Id }))'">
-                                       
+                                        <button type="button" class="btn btn-danger fas fa-trash-alt ml-auto" onclick="location.href = '@(Url.Action("Delete", "Pilot", new { id = pilot.Id }))'">
                                         </button>
                                     </td>
                                 </tr>
                             }
+                            <tr>
+                                <td>
+                                    <button type="button" class="btn btn-outline-primary" onclick="location.href = '@Url.Action("Creation","Pilot")'">Create a pilot</button>
+                                </td>
+                            </tr>
                         </tbody>
+                      
                     </table>
                 </div>
+
             </div>
             <div class="col-2">
             </div>
         </div>
     </div>
 
-    <div>
-        <button type="button" class="btn btn-outline-primary" onclick="location.href = '@Url.Action("Creation","Pilot")'">Create a pilot</button>
-    </div>
+
     <!--<div class="modal fade" id="deleteModal" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">

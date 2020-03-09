@@ -5,23 +5,37 @@
 
 @model Paraglider.sl.DTOs.PilotAndRoleMergeViewModel
 
-    <form method="post">
-        <div class="container">
-            <label asp-for="PilotDetail.FirstName"></label>
-            <input asp-for="PilotDetail.FirstName" class="form-control form-control-sm" />
+<form method="post">
+    <div class="container">
+        <div class="col-4">
+        </div>
+    </div>
+    <div id="formulaireedit" class="col-4">
+        <h1>Create</h1>
+        <div class="col-12 form-group">
+            <label asp-for="PilotDetail.LastName" class="col-auto"></label><br />
+            <span asp-validation-for="PilotDetail.LastName" class="text-danger"></span>
+            <input asp-for="PilotDetail.LastName" class="form-control form-control-sm col" />
+        </div>
+        <div class="col-12 form-group">
+            <label asp-for="PilotDetail.FirstName" class="col-auto"></label><br />
+            <span asp-validation-for="PilotDetail.FirstName" class="text-danger"></span>
+            <input asp-for="PilotDetail.FirstName" class="form-control form-control-sm col" />
 
-            <label asp-for="PilotDetail.LastName"></label>
-            <input asp-for="PilotDetail.LastName" class="form-control form-control-sm" />
-
-            <label asp-for="PilotDetail.Email"></label>
-            <input asp-for="PilotDetail.Email" class="form-control form-control-sm" />
-
-            <label asp-for="PilotDetail.PhoneNumber"></label>
-            <input asp-for="PilotDetail.PhoneNumber" class="form-control form-control-sm" />
-
-            <label asp-for="PilotDetail.Weight"></label>
-            <input asp-for="PilotDetail.Weight" class="form-control form-control-sm" />
-            <br />
+        </div>
+        <div class="col-12 form-group">
+            <label asp-for="PilotDetail.Email" class="col-auto"></label>
+            <input asp-for="PilotDetail.Email" class="form-control form-control-sm col" />
+        </div>
+        <div class="col-12 form-group">
+            <label asp-for="PilotDetail.PhoneNumber" class="col-auto"></label>
+            <input asp-for="PilotDetail.PhoneNumber" class="form-control form-control-sm col" />
+        </div>
+        <div class="col-12 form-group">
+            <label asp-for="PilotDetail.Weight" class="col-auto"></label>
+            <input asp-for="PilotDetail.Weight" class="form-control form-control-sm col" />
+        </div>
+        <div class="col-12 form-group">
             <label asp-for="PilotDetail.Role"></label>
             <select asp-for="PilotDetail.Role.RoleId" class="custom-select custom-select-sm">
                 @foreach (var role in Model.Roles)
@@ -32,8 +46,10 @@
             </select>
         </div>
 
+
         <br />
-        <div class="col-2">
+        <div class="col-12 form-group">
             <button type="submit" class="btn btn-primary">Create</button>
         </div>
-    </form>
+    </div>
+</form>
