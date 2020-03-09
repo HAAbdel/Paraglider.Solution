@@ -37,41 +37,40 @@
             <div class="col-1">
             </div>
             <div class="col-10">
-                <div class="table-responsive-lg" style="position: relative; height: 100%; display: block; overflow: auto;">
-                    <table class="table table-borderless table-hover table-striped justify-content-center" style="background-color: rgba(255,255,255,0.5);">
-                        <thead class="thead-dark">
-                            <tr class="d-flex">
-                                <th class="col-1">id </th>
-                                <th class="col-4">first name</th>
-                                <th class="col-4">last name</th>
-                                <th class="col-3"></th>
-                            </tr>
-                            <tr></tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var pilot in Model)
-                            {
-                                <tr style="cursor: pointer;" class="d-flex">
-                                    <td class="col-1" onclick="location.href = '@(Url.Action("Details", "Pilot", new { id = pilot.Id }))'">@pilot.Id </td>
-                                    <td class="col-4" onclick="location.href = '@(Url.Action("Details", "Pilot", new { id = pilot.Id }))'">@pilot.FirstName</td>
-                                    <td class="col-4" onclick="location.href = '@(Url.Action("Details", "Pilot", new { id = pilot.Id }))'">@pilot.LastName</td>
-                                    <td class="col-3 row">
-                                        <button type="button" class="btn btn-primary" onclick="location.href = '@Url.Action("Edit","Pilot",pilot)'">Edit Pilot</button>
-                                        <button type="button" class="btn btn-danger fas fa-trash-alt ml-auto" onclick="location.href = '@(Url.Action("Delete", "Pilot", new { id = pilot.Id }))'">
-                                        </button>
-                                    </td>
+                <div id="formulaireedit">
+                    <div class="table-responsive-lg overflow-auto" style="position: relative; max-height: 600px; display: block;">
+                        <table class="table table-borderless table-hover table-striped justify-content-center" style="background-color: rgba(255,255,255,0.5);">
+                            <thead class="thead-dark">
+                                <tr class="d-flex">
+                                    <th class="col-1">id </th>
+                                    <th class="col-4">first name</th>
+                                    <th class="col-4">last name</th>
+                                    <th class="col-3"></th>
                                 </tr>
-                            }
-                            <tr>
-                                <td>
-                                    <button type="button" class="btn btn-outline-primary" onclick="location.href = '@Url.Action("Creation","Pilot")'">Create a pilot</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                      
-                    </table>
-                </div>
+                                <tr></tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var pilot in Model)
+                                {
+                                    <tr style="cursor: pointer;" class="d-flex">
+                                        <td class="col-1" onclick="location.href = '@(Url.Action("Details", "Pilot", new { id = pilot.Id }))'">@pilot.Id </td>
+                                        <td class="col-4" onclick="location.href = '@(Url.Action("Details", "Pilot", new { id = pilot.Id }))'">@pilot.FirstName</td>
+                                        <td class="col-4" onclick="location.href = '@(Url.Action("Details", "Pilot", new { id = pilot.Id }))'">@pilot.LastName</td>
+                                        <td class="col-3 row">
+                                            <button type="button" class="btn btn-primary" onclick="location.href = '@Url.Action("Edit","Pilot",pilot)'">Edit Pilot</button>
+                                            <button type="button" class="btn btn-danger fas fa-trash-alt ml-auto" onclick="location.href = '@(Url.Action("Delete", "Pilot", new { id = pilot.Id }))'">
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+                                <tr>
+                                </tr>
+                            </tbody>
 
+                        </table>
+                    </div>
+                    <button type="button" class="btn btn-outline-primary" onclick="location.href = '@Url.Action("Creation","Pilot")'">Create a pilot</button>
+                </div>
             </div>
             <div class="col-1">
             </div>
