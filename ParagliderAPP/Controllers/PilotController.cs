@@ -121,12 +121,12 @@ namespace ParagliderAPP.Controllers
         [HttpGet]
         public ActionResult Delete(int id)
         {
+            PilotDetailDto pilotDetailedToRemove = new DetailedPilot(_context).GetSpecific(id);
 
-            //if (PilotToDelete.PilotDetail.Role.RoleId == -1)
-            //    PilotToDelete.PilotDetail.Role = null;
+            if (pilotDetailedToRemove.Role.RoleId == -1)
+                pilotDetailedToRemove.Role = null;
 
-            //PilotDetailDto pilotDtoToDelete = PilotToDelete.PilotDetail;
-            //new DetailedPilot(_context).RemovingPilot(pilotDtoToDelete);
+            new DetailedPilot(_context).RemovingPilot(pilotDetailedToRemove);
 
             return RedirectToAction("Index");
         }

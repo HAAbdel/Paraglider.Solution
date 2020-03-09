@@ -5,7 +5,7 @@
 <head>
     <title></title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script>
+    <!--<script>
         $('#deleteModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget) // Button that triggered the modal
             var deletePilot = button.data('pilot') // Extract info from data-* attributes
@@ -15,7 +15,7 @@
             modal.find('h5').text('You are about to delete pilot : ' + deletePilot.PilotDetail.FirstName)
             modal.find('.modal-body input').val(deletePilot)
         });
-    </script>
+    </script>-->
 </head>
 <body>
     <form method="Post">
@@ -37,7 +37,7 @@
             <div class="col-2">
             </div>
             <div class="col-8">
-                <div class="table-responsive-lg" style="position: relative; height: 90%; display: block; overflow: auto;">
+                <div class="table-responsive-lg" style="position: relative; height: 100%; display: block; overflow: auto;">
                     <table class="table table-borderless table-hover table-striped justify-content-center" style="background-color: rgba(255,255,255,0.5);">
                         <thead class="thead-dark">
                             <tr class="d-flex">
@@ -55,10 +55,7 @@
                                     <td class="col-4" onclick="location.href = '@(Url.Action("Details", "Pilot", new { id = pilot.Id }))'">@pilot.LastName</td>
                                     <td class="col-3 row">
                                         <button type="button" class="btn btn-primary" onclick="location.href = '@Url.Action("Edit","Pilot",pilot)'">Edit Pilot</button>
-                                        <!--<button type="button" class="btn btn-danger  ml-auto" onclick="location.href = '@(Url.Action("Delete","Pilot",new { id = pilot.Id }))'">X</button>-->
-                                        <button type="button" class="btn btn-danger  ml-auto" data-toggle="modal" data-target="#deleteModal" data-pilot="@pilot">
-                                            X
-                                        </button>
+                                        <button type="button" class="btn btn-danger  ml-auto" onclick="location.href = '@(Url.Action("Delete", "Pilot", new { id = pilot.Id }))'">@pilot.Id</button>
                                     </td>
                                 </tr>
                             }
@@ -74,7 +71,7 @@
     <div>
         <button type="button" class="btn btn-outline-primary" onclick="location.href = '@Url.Action("Creation","Pilot")'">Create a pilot</button>
     </div>
-    <div class="modal fade" id="deleteModal" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <!--<div class="modal fade" id="deleteModal" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -86,6 +83,7 @@
             </div>
         </div>
     </div>
+        -->
 
 </body>
 </html> 
