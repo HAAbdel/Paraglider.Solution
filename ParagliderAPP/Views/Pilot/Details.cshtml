@@ -7,22 +7,26 @@
 @model Paraglider.sl.DTOs.PilotDetailDto
 
 <h1>Details</h1>
-<div style="font-size:large;  font-weight: bold">
-    <table>
-        <tr>First Name : @Model.FirstName</tr>
-        <br />
-        <tr>Last Name : @Model.LastName</tr>
-        <br />
-        <tr>Phone Number : @Model.PhoneNumber</tr>
-        <br />
-        <tr>Email : @Model.Email</tr>
-        <br />
-        <tr>Weight : @Model.Weight</tr>
-        <br />
-        <tr>Role : @Model.Role.RoleName</tr>
-        <br />
-        <tr>Total flight hours : @Model.TotalHoursFlight</tr>
 
-
-    </table>
+<div class="container">
+    <div class="col-4"></div>
+    <div class="col-4 justify-content-center" id="formulaireedit">
+        <div style="font-size:large;  font-weight: bold">
+            <table>
+                <tr>First Name : @Model.FirstName</tr>
+                <br />
+                <tr>Last Name : @Model.LastName</tr>
+                <br />
+                <tr>Phone Number : @Model.PhoneNumber</tr>
+                <br />
+                <tr>Email : @Model.Email</tr>
+                <br />
+                <tr>Weight : @Model.Weight</tr>
+                <br />
+                <tr>Role : @Model.Role.RoleName</tr>
+                <br />
+                <tr>Total flight hours : @Model.TotalHoursFlight</tr>
+            </table>
+        </div>
+    </div>
 </div>
