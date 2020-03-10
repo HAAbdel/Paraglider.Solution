@@ -39,6 +39,10 @@ namespace ParagliderAPP.Controllers
         {
             return RedirectToAction("Index","ParagliderModel");
         }
+        public IActionResult MemberShip()
+        {
+            return RedirectToAction("Index", "MemberShip");
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

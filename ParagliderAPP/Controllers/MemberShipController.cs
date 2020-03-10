@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Paraglider.DAL;
+using Paraglider.sl.Queries;
 
 namespace ParagliderAPP.Controllers
 {
@@ -16,8 +17,9 @@ namespace ParagliderAPP.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            MemberShipList MSL = new MemberShipList(_context);
+            var model = MSL.GetAllAvalable();
+            return View(model);
         }
-
     }
 }

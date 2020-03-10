@@ -3,5 +3,42 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+@model IQueryable<Paraglider.sl.DTOs.MemberShipDto>
 
+<form method="Post">
+    <div class="form-group">
+        <div class="input-group">
+            <input type="search" class="form-control" name="name" value="" />
+            <div class="input-group-append">
+                <button class="btn btn-secondary">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+<div class=" container justify-content-center">
+    <div class="table-responsive-lg" id="formulaireedit">
+        <table class="table table-borderless table-hover table-striped ">
+            <thead class="thead-dark">
+                <tr>
+                    <th>id </th>
+                    <th>MemberShip amount</th>
+                    <th>Total of pilot subscribed</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var subscriptions in Model)
+                {
+                    <tr style="cursor : pointer">
+                        <th>@subscriptions.id </th>
+                        <th>@subscriptions.membershipAmount</th>
+                        <th>@subscriptions.numberOfSubscribers</th>
+                        <th><button class="btn btn-danger">DELETE</button></th>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
