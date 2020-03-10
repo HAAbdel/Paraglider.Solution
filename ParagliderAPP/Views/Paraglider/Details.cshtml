@@ -12,7 +12,7 @@
         <br />
         <tr> type : @Model.paragliderModel.ModelType</tr>
         <br />
-        <tr>Toltal flight hours : @Model.FlightHours</tr>
+        <tr>Toltal flight hours : @((Model.FlightHours / 60).ToString("0")) Hour(s) @(Model.FlightHours % 60) Minute(s)</tr>
         <br />
         <tr>Date of use : @Model.DateOfUse</tr>
         <br />

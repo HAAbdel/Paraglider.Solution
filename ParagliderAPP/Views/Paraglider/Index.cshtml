@@ -14,7 +14,6 @@
                     <i class="fas fa-search"></i>
                 </button>
             </div>
-
         </div>
     </div>
 </form>
@@ -35,7 +34,7 @@
                     <tr style="cursor : pointer" onclick="location.href = '@(Url.Action("Details", "Paraglider", new { id = Paraglider.Id }))'">
                         <th>@Paraglider.Id </th>
                         <th>@Paraglider.ParagliderModelName</th>
-                        <th>@Paraglider.TotalHoursFlight</th>
+                        <th>@((Paraglider.TotalHoursFlight / 60).ToString("0")) Hour(s) @(Paraglider.TotalHoursFlight % 60) Minute(s)</th>
                         <th><button type="button" class="btn btn-outline-info fas fa-plane ml-auto" onclick="location.href = '@(Url.Action("Details", "ParagliderModel", new { id = Paraglider.ParagliderModelId }))'">  Model</button></th>
                     </tr>
                 }

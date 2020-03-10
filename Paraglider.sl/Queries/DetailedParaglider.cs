@@ -34,6 +34,7 @@ namespace Paraglider.sl.Queries
                 }).First();
             return paragliderDetailDTO;
         }
+        
 
 	}
 }

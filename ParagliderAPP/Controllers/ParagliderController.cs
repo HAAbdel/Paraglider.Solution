@@ -28,5 +28,6 @@ namespace ParagliderAPP.Controllers
             var model = Sp.GetSpecificParagliderWithSimpleModel(id);
             return View("Details", model);
         }
+
     }
 }
