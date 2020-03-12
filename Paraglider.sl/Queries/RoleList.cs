@@ -19,11 +19,16 @@ namespace Paraglider.sl.Queries
         }
         public IEnumerable<RoleDTO> GetAllRoles()
         {
-            var Roles = _config.Roles.Select(p => new RoleDTO { Id = p.RoleId, RoleName = p.RoleName });
-            foreach(var role in Roles)
-            {
-                Console.WriteLine(role.RoleName);
-            }
+            var Roles = _config.Roles
+                .Select(p => new RoleDTO
+                {
+                    Id = p.RoleId,
+                    RoleName = p.RoleName,
+                    pilotId = p.PilotId,
+                    pilotName = p.Pilot.FirstName + " " + p.Pilot.LastName
+                })
+                .IgnoreQueryFilters();
+
             return Roles;
         }
         public IEnumerable<RoleDTO> GetAllAvalableRoles()
@@ -32,22 +37,21 @@ namespace Paraglider.sl.Queries
                 .Select(p => new RoleDTO
                     { 
                         Id = p.RoleId, 
-                        RoleName = p.RoleName 
+                        RoleName = p.RoleName,
+                        pilotId = p.PilotId,
+                        pilotName = p.Pilot.FirstName + " " + p.Pilot.LastName
                     })
                 .IgnoreQueryFilters();
 
-            foreach (var role in Roles)
-            {
-                Console.WriteLine(role.RoleName);
-            }
+            
             return Roles;
         }
-        public RoleDTO GetSpecificRole(int SearchedRoleId)
+        public RoleDTO GetSpecificRole(int SearchedRoleId)//Cette methode n'a aucun interet
         {
             var Role = _config.Roles.Select(p => new RoleDTO 
                 { 
                 Id = p.RoleId, 
-                RoleName = p.RoleName 
+                RoleName = p.RoleName
                 }).Where(r => r.Id == SearchedRoleId)
                 .First();
 

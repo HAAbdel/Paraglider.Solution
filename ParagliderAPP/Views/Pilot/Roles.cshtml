@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewData["Title"] = "Roles";
+}
+
+@model IQueryable<Paraglider.sl.DTOs.RoleDTO>
+
+    <div class=" container justify-content-center">
+        <div class="table-responsive-lg" id="formulaireedit">
+            <table class="table table-bordered table-hover table-striped ">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Role name</th>
+                        <th>Pilot name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var Role in Model)
+                    {
+                        <tr style="cursor : pointer">
+                            <td>@Role.RoleName</td>
+                            <td>
+                            @if(Role.pilotName == null)
+                            {
+                                <h5><b>Not assigned</b></h5>
+                            }
+                            else
+                            {
+                                <h5><b>@Role.pilotName</b></h5>
+                            }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>

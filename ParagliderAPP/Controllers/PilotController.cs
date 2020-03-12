@@ -74,7 +74,7 @@ namespace ParagliderAPP.Controllers
 
             try
             {
-                model = Sp.UpdatePilot(pilotForUpdate);
+                model.PilotDetail = Sp.UpdatePilot(pilotForUpdate.PilotDetail);
             }
             catch(DbUpdateException exceptionCatched)
             {
@@ -129,6 +129,13 @@ namespace ParagliderAPP.Controllers
             new DetailedPilot(_context).RemovingPilot(pilotDetailedToRemove);
 
             return RedirectToAction("Index");
+        }
+        public ActionResult Roles()
+        {
+            RoleList roleList = new RoleList(_context);
+            var model = roleList.GetAllRoles();
+
+            return View(model);
         }
     }
 }

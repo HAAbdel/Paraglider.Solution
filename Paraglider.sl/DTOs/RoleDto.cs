@@ -8,5 +8,7 @@ namespace Paraglider.sl.DTOs
     {
         public int Id { get; set; }
         public string RoleName { get; set; }
+        public int pilotId { get; set; }
+        public string pilotName { get; set; }
     }
 }

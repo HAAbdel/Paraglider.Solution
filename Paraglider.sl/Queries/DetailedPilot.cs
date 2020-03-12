@@ -37,7 +37,6 @@ namespace Paraglider.sl.Queries
                 PilotDetailDto.Role = new Role() { RoleId = -1, RoleName = "Default role" };
             }
 
-
             return PilotDetailDto;
         }
         public PilotDetailDto CreateNewPilot(PilotDetailDto NewDtoPilot)//A CHANGER
@@ -58,35 +57,47 @@ namespace Paraglider.sl.Queries
                 Role = null
             };
 
-            //Adding the new pilot without role (we add it later)
+            //Adding the new pilot to get an id from the db
             _config.Pilots.Add(NewPilot);
             
+            _config.SaveChanges();
+
             NewDtoPilot.Id = NewPilot.PilotId;
+
             if (NewDtoPilot.Role != null)
-                AddRoleToPilot(NewDtoPilot.Role.RoleId,NewPilot);
+            {
+                Role roleToAddToThePilot = _config.Roles.Where(r => r.RoleId == NewDtoPilot.Role.RoleId).IgnoreQueryFilters().First();
+                AddRoleToPilot(roleToAddToThePilot, NewPilot);
+            }
 
             _config.SaveChanges();
 
             return NewDtoPilot;
         }
-        public PilotAndRoleMergeViewModel UpdatePilot(PilotAndRoleMergeViewModel pilotDetailDto)
+        public PilotDetailDto UpdatePilot(PilotDetailDto pilotDetailDto)
         {
             //GET the pilot from the database to modify it
-            Pilot pilotFromDB = _config.Pilots.Where(p => p.PilotId == pilotDetailDto.PilotDetail.Id).First();
-            pilotFromDB.FirstName = pilotDetailDto.PilotDetail.FirstName;
-            pilotFromDB.LastName = pilotDetailDto.PilotDetail.LastName;
-            pilotFromDB.Email = pilotDetailDto.PilotDetail.Email;
-            pilotFromDB.Weight = pilotDetailDto.PilotDetail.Weight;
-            pilotFromDB.PhoneNumber = pilotDetailDto.PilotDetail.PhoneNumber;
+            //Pilot pilotFromDB = _config.Pilots.Where(p => p.PilotId == pilotDetailDto.Id).First();
+            Pilot pilotFromDB = new Pilot();
+            pilotFromDB.PilotId = pilotDetailDto.Id;
+            pilotFromDB.IsActive = true;
+            pilotFromDB.FirstName = pilotDetailDto.FirstName;
+            pilotFromDB.LastName = pilotDetailDto.LastName;
+            pilotFromDB.Email = pilotDetailDto.Email;
+            pilotFromDB.Weight = pilotDetailDto.Weight;
+            pilotFromDB.PhoneNumber = pilotDetailDto.PhoneNumber;
+            pilotFromDB.Role = _config.Roles.Where(r => r.PilotId == pilotFromDB.PilotId).IgnoreQueryFilters().FirstOrDefault();
+            if(pilotFromDB.Role != null)
+                pilotFromDB.RoleId = pilotFromDB.Role.RoleId;
 
             //GET the previus pilot role if he had one
-            if(pilotFromDB.RoleId != null)
+            if (pilotFromDB.RoleId != null)
                 pilotFromDB.Role = _config.Roles.Where(r => r.RoleId == pilotFromDB.RoleId).IgnoreQueryFilters().First();
             //GET the new pilot role if he is asking for one
-            if(pilotDetailDto.PilotDetail.Role != null)
-                pilotDetailDto.PilotDetail.Role = _config.Roles.Where(r => r.RoleId == pilotDetailDto.PilotDetail.Role.RoleId).IgnoreQueryFilters().First();
+            if(pilotDetailDto.Role != null)
+                pilotDetailDto.Role = _config.Roles.Where(r => r.RoleId == pilotDetailDto.Role.RoleId).IgnoreQueryFilters().First();
 
-            RoleModificationManager(pilotDetailDto.PilotDetail, pilotFromDB);
+            RoleModificationManager(pilotDetailDto.Role, pilotFromDB);
 
             _config.SaveChanges();
 
@@ -98,7 +109,7 @@ namespace Paraglider.sl.Queries
             //GET the pilot role (if he had once)
             if(pilotDetailDto.Role != null)
             {
-                RemoveRoleFromPilot(pilotDetailDto.Role.RoleId,pilotFromDB);
+                RemoveRoleFromPilot(pilotFromDB.Role);
             }
             pilotFromDB.IsActive = false;
             pilotFromDB.Role = null;
@@ -109,48 +120,30 @@ namespace Paraglider.sl.Queries
             _config.SaveChanges();
         }
 
-        private void RoleModificationManager(PilotDetailDto pPilotDetailDto,Pilot pPilotFromDb)
+        private void RoleModificationManager(Role pRoleToSetActive,Pilot pPilotFromDb)
         {
             //If the pilot had NO role before
             if(pPilotFromDb.Role == null)
             {
                 //If the pilot is going to have a new role
-                if(pPilotDetailDto.Role != null)
+                if(pRoleToSetActive != null)
                 {
                     //Changing only the new role on the database
-                    Role roleToSetActive = _config.Roles.Where(r => r.RoleId == pPilotDetailDto.Role.RoleId).IgnoreQueryFilters().First();
-                    roleToSetActive.IsActive = true;
-                    roleToSetActive.PilotId = pPilotFromDb.PilotId;
-                    roleToSetActive.Pilot = pPilotFromDb;
-
-                    _config.Roles.Update(roleToSetActive);
-
-                    //_config.SaveChanges();
+                    AddRoleToPilot(pRoleToSetActive, pPilotFromDb);
                 }
                 //If the pilot NO role and don't want one
             }
             else
             {
                 //If the pilot is going to have a new role
-                if (pPilotDetailDto.Role != null)
+                if (pRoleToSetActive != null)
                 {
-                    if (pPilotDetailDto.Role.RoleId != pPilotFromDb.RoleId)
+                    if (pRoleToSetActive.RoleId != pPilotFromDb.RoleId)
                     {
                         //Setting the role before to NOT ative and setting the new role to active and link the role to the pilot and the piot to the role
-                        Role roleToSetActive = _config.Roles.Where(r => r.RoleId == pPilotDetailDto.Role.RoleId).IgnoreQueryFilters().First();
-                        roleToSetActive.IsActive = true;
-                        roleToSetActive.PilotId = pPilotFromDb.PilotId;
-                        roleToSetActive.Pilot = pPilotFromDb;
-                        _config.Roles.Update(roleToSetActive);
+                        AddRoleToPilot(pRoleToSetActive, pPilotFromDb);
 
-                        Role roleToSetInactive = pPilotFromDb.Role;
-                        roleToSetInactive.IsActive = false;
-                        roleToSetInactive.PilotId = 0;
-                        roleToSetInactive.Pilot = null;
-
-                        _config.Roles.Update(roleToSetInactive);
-
-                        //_config.SaveChanges();
+                        RemoveRoleFromPilot(pPilotFromDb.Role);
                     }
                     else
                     {
@@ -159,38 +152,25 @@ namespace Paraglider.sl.Queries
                 }
                 else
                 {
-                    //The pilot had a role and setting is to null
-                    Role roleToSetInactive = pPilotFromDb.Role;
-                    roleToSetInactive.IsActive = false;
-                    roleToSetInactive.PilotId = 0;
-                    roleToSetInactive.Pilot = null;
-
-                    _config.Roles.Update(roleToSetInactive);
-
-                    //_config.SaveChanges();
+                    //The pilot had a role and setting it to null
+                    RemoveRoleFromPilot(pPilotFromDb.Role);
                 }
             }
         }
-
-        private void AddRoleToPilot(int pRoleId,Pilot pPilotToLinkToTheRole)
+        private void RemoveRoleFromPilot(Role pRoleToRemove)
         {
-            //Add the role to the new pilot 
-            Role RoleToModify = _config.Roles.Where(r => r.RoleId == pRoleId).IgnoreQueryFilters().First();
-            RoleToModify.IsActive = true;
-            RoleToModify.PilotId = pPilotToLinkToTheRole.PilotId;
-            RoleToModify.Pilot = pPilotToLinkToTheRole;
+            pRoleToRemove.IsActive = false;
+            pRoleToRemove.PilotId = 0;
+            pRoleToRemove.Pilot = null;
 
-            _config.Roles.Update(RoleToModify);
+            _config.Roles.Update(pRoleToRemove);
         }
-        private void RemoveRoleFromPilot(int pRoleId,Pilot pPilotToRemoveTheRoleFrom)
+        private void AddRoleToPilot(Role pRoleToAdd,Pilot pPilotToAddTheRole)
         {
-            Role roleToRemove = pPilotToRemoveTheRoleFrom.Role;
-            roleToRemove.IsActive = false;
-            roleToRemove.PilotId = 0;
-            roleToRemove.Pilot = null;
-
-            _config.Roles.Update(roleToRemove);
-
+            pRoleToAdd.IsActive = true;
+            pRoleToAdd.PilotId = pPilotToAddTheRole.PilotId;
+            pRoleToAdd.Pilot = pPilotToAddTheRole;//A VÉRIFIER SI UTILSE !!!
+            _config.Roles.Update(pRoleToAdd);
         }
     }
 }
